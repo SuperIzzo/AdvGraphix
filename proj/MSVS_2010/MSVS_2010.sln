@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GraphicsAssignment", "GraphicsAssignment\GraphicsAssignment.vcxproj", "{F39B07E9-00F8-4DAC-8B2F-2B24F7A4602E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F39B07E9-00F8-4DAC-8B2F-2B24F7A4602E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F39B07E9-00F8-4DAC-8B2F-2B24F7A4602E}.Debug|Win32.Build.0 = Debug|Win32
+		{F39B07E9-00F8-4DAC-8B2F-2B24F7A4602E}.Release|Win32.ActiveCfg = Release|Win32
+		{F39B07E9-00F8-4DAC-8B2F-2B24F7A4602E}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
