@@ -1,67 +1,43 @@
-#ifndef __VECTOR_H__
-#define __VECTOR_H__
-
 /*
  * Author:		Hristoz Stefanov Stefanov
  * Created:		29/10/2012
  */
 
-#include "VectorCommon.h"
+#ifndef __VECTOR_H__
+#define __VECTOR_H__
 
 
+#include "VectorData.h"
 
 
+template< int D, typename T >
 
-// General vectors case - vector in the most common sense
-template< int dimensions, typename Type >
-class Vector :public VectorCommon<dimensions, Type>
-{
-};
-
-
-
-
-
-// One dimensional vector
-template< typename Type >
-class Vector<1, Type>	:	public VectorCommon<1, Type>
+struct Vector	: public VectorData<D, T>
 {
 public:
-						Vector();
-						Vector(Type aX);
-};
+	typedef	T				CoordType;
+	static const int		DIMENSIONS = D;
 
-
-
-template< typename Type >
-class Vector<2, Type>	:	public VectorCommon<2, Type>
-{
 public:
-						Vector();
-						Vector(Type aX, Type aY);
+							Vector();
+							Vector(CoordType aX);
+							Vector(CoordType aX, CoordType aY);
+							Vector(CoordType aX, CoordType aY, CoordType aZ);
+							Vector(CoordType aX, CoordType aY, CoordType aZ, CoordType aW);
+							
+
+	CoordType				Dot(const Vector<D, T>	 &other);
+	CoordType				Length();
+
+	Vector<3, T>			Cross(const Vector<3, T> &other);
+
+	Vector<D, T>			operator+(const Vector<D, T>	&other);
+	Vector<D, T>			operator-(const Vector<D, T>	&other);
+	CoordType&				operator[] (size_t index);
+
+
 };
 
-
-
-template< typename Type >
-class Vector<3, Type>	:	public VectorCommon<3, Type>
-{
-public:
-						Vector();
-						Vector(Type aX, Type aY, Type aZ);
-
-	Vector<3, Type>		Cross(const Vector<3, Type> &other);
-};
-
-
-
-template< typename Type >
-class Vector<4, Type>	:	public VectorCommon<4, Type>
-{
-public:
-						Vector();
-						Vector(Type aX, Type aY, Type aZ, Type aW);
-};
 
 
 // Float vectors

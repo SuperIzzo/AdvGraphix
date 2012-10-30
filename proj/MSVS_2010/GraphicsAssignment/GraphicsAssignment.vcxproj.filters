@@ -20,21 +20,18 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\include\Vector.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\VectorData.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\VectorCommon.h">
+    <ClInclude Include="..\..\..\include\Vector.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Vector.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\include\Vector.inl">
-      <Filter>include</Filter>
-    </None>
-    <None Include="..\..\..\include\VectorCommon.inl">
       <Filter>include</Filter>
     </None>
   </ItemGroup>

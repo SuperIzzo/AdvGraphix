@@ -8,7 +8,7 @@
 
 SUITE( Vector )
 {
-	TEST( TEST_Vector1to4InitializesWith0 )
+	TEST( TEST_vector_1_to_4_default_initializes_to_0 )
 	{
 		// One-dimensional vector
 		Vector<1, float> vect1;
@@ -41,7 +41,7 @@ SUITE( Vector )
 	}
 
 
-	TEST( TEST_Vector1to4ConstructorInitializesProperly )
+	TEST( TEST_vector_1_to_4_initialization_general_case )
 	{
 		// One-dimensional vector
 		Vector<1, float> vect1(6);
@@ -73,8 +73,29 @@ SUITE( Vector )
 		CHECK_EQUAL( 3, vect4.w );
 	}
 
+
+	TEST( TEST_vector_addition_and_subtraction_general_case )
+	{
+		Vector3f vectA(3, 4.5, -2);
+		Vector3f vectB(1, 12, 8);
+
+
+		Vector3f vectC = vectA + vectB;
+
+		CHECK_EQUAL( 4,		vectC.x );
+		CHECK_EQUAL( 16.5,	vectC.y );
+		CHECK_EQUAL( 6,		vectC.z );
+
+
+		Vector3f vectD = vectA - vectB;
+
+		CHECK_EQUAL( 2,		vectD.x );
+		CHECK_EQUAL( -7.5,	vectD.y );
+		CHECK_EQUAL( -10,	vectD.z );
+	}
+
 	
-	TEST( TEST_VectorLengthWorks )
+	TEST( TEST_vector_length_general_case )
 	{
 		Vector2f vect2f(3,4);
 
@@ -92,7 +113,7 @@ SUITE( Vector )
 	}
 
 
-	TEST( TEST_VectorDotProductWorks )
+	TEST( TEST_vector_dot_product_general_case )
 	{
 		Vector3f vectA;
 		Vector3f vectB;
@@ -109,11 +130,24 @@ SUITE( Vector )
 	}
 
 
-	TEST( TEST_VectorDotAgainstSelfWorks )
+	TEST( TEST_vector_dot_product_against_self )
 	{
 		Vector3f vectA(5, -7, 2);
 
 		CHECK_EQUAL( 78, vectA.Dot( vectA ));
 		CHECK_CLOSE( vectA.Length()*vectA.Length(),		vectA.Dot( vectA ),		0.001f );
+	}
+
+
+	TEST( TEST_vector_cross_product_general_case )
+	{
+		Vector3f vectA(3, 5, 2);
+		Vector3f vectB(1, 0, -4);
+
+		Vector3f vectC = vectA.Cross( vectB );
+
+		CHECK_EQUAL( -20,	vectC.x );
+		CHECK_EQUAL(  14,	vectC.y );
+		CHECK_EQUAL(  -5,	vectC.z );
 	}
 }

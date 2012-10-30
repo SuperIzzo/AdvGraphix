@@ -16,12 +16,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\Vector.h" />
-    <ClInclude Include="..\..\..\include\VectorCommon.h" />
     <ClInclude Include="..\..\..\include\VectorData.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\include\Vector.inl" />
-    <None Include="..\..\..\include\VectorCommon.inl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{F39B07E9-00F8-4DAC-8B2F-2B24F7A4602E}</ProjectGuid>

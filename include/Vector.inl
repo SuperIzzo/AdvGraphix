@@ -8,13 +8,15 @@
 
 
 
+#define STATIC_ASSERT( cond, desc )		int desc[cond]; (void) desc;
 
 
 //=================================================================
-// Vector<1>::Vector()
+//	Vector::Vector
 //---------------------------------------
-template< typename Type >
-Vector<1, Type>::Vector()
+template< int D, typename T>
+
+Vector<D, T>::Vector()
 {
 }
 
@@ -23,23 +25,12 @@ Vector<1, Type>::Vector()
 
 
 //=================================================================
-// Vector<1>::Vector(x)
+//	Vector::Vector(x)
 //---------------------------------------
-template< typename Type >
-Vector<1, Type>::Vector(Type aX)
-{
-	x = aX;
-}
+template< int D, typename T>
 
-
-
-
-
-//=================================================================
-// Vector<2>::Vector()
-//---------------------------------------
-template< typename Type >
-Vector<2, Type>::Vector()
+Vector<D, T>::Vector(T aX)
+	: VectorData(aX)
 {
 }
 
@@ -48,24 +39,12 @@ Vector<2, Type>::Vector()
 
 
 //=================================================================
-// Vector<2>::Vector(x,y)
+//	Vector::Vector(x,y)
 //---------------------------------------
-template< typename Type >
-Vector<2, Type>::Vector(Type aX, Type aY)
-{
-	x = aX;
-	y = aY;
-}
+template< int D, typename T>
 
-
-
-
-
-//=================================================================
-// Vector<3>::Vector()
-//---------------------------------------
-template< typename Type >
-Vector<3, Type>::Vector()
+Vector<D, T>::Vector(T aX, T aY)
+	: VectorData(aX, aY)
 {
 }
 
@@ -74,25 +53,12 @@ Vector<3, Type>::Vector()
 
 
 //=================================================================
-// Vector<3>::Vector(x,y,z)
+//	Vector::Vector(x,y,z)
 //---------------------------------------
-template< typename Type >
-Vector<3, Type>::Vector(Type aX, Type aY, Type aZ)
-{
-	x = aX;
-	y = aY;
-	z = aZ;
-}
+template< int D, typename T>
 
-
-
-
-
-//=================================================================
-// Vector<4>::Vector()
-//---------------------------------------
-template< typename Type >
-Vector<4, Type>::Vector()
+Vector<D, T>::Vector(T aX, T aY, T aZ)
+	: VectorData(aX, aY, aZ)
 {
 }
 
@@ -101,15 +67,131 @@ Vector<4, Type>::Vector()
 
 
 //=================================================================
-// Vector<4>::Vector(x,y,z,w)
+//	Vector::Vector(x,y,z,w)
 //---------------------------------------
-template< typename Type >
-Vector<4, Type>::Vector(Type aX, Type aY, Type aZ, Type aW)
+template< int D, typename T>
+
+Vector<D, T>::Vector(T aX, T aY, T aZ, T aW)
+	: VectorData(aX, aY, aZ, aW)
 {
-	x = aX;
-	y = aY;
-	z = aZ;
-	w = aW;
+}
+
+
+
+
+
+//=================================================================
+//	Vector::Dot : Returns the dot product between two vectors
+//---------------------------------------
+template< int D, typename T>
+
+T Vector<D, T>::Dot(const Vector<D, T> &other)
+{
+	T theResult = 0;
+
+	for( int i=0; i<D; i++ )
+	{
+		theResult += this->coords[i] * other.coords[i];
+	}
+
+	return theResult;
+}
+
+
+
+
+
+//=================================================================
+//	Vector::Length : Returns the length of a vector
+//---------------------------------------
+template< int D, typename T>
+
+T Vector<D, T>::Length()
+{
+	T theResult = 0;
+
+	for( int i=0; i<D; i++ )
+	{
+		theResult += coords[i] * coords[i];
+	}
+
+	return (T) sqrt(theResult);
+}
+
+
+
+
+
+//=================================================================
+//	Vector::operator+ : Returns the sum of two vectors
+//---------------------------------------
+template< int D, typename T>
+Vector<D, T>	Vector<D, T>::operator+(const Vector<D, T>	&other)
+{
+	Vector<D, T> theResult;
+
+	for( int i=0; i< D; i++ )
+	{
+		theResult.coords[i] = this->coords[i] + other.coords[i];
+	}
+
+	return theResult;
+}
+
+
+
+
+
+//=================================================================
+//	Vector::Cross : Returns the cross product of two 3D vectors
+//---------------------------------------
+template< int D, typename T>
+Vector<3, T>	Vector<D, T>::Cross(const Vector<3, T>	&other)
+{
+	Vector<3, T> theResult;
+
+	STATIC_ASSERT( D==3, vector_cross_produc_is_only_defined_for_3D_vectors );
+
+	theResult.x = (this->y * other.z) - (this->z * other.y);
+	theResult.y = (this->z * other.x) - (this->x * other.z);
+	theResult.z = (this->x * other.y) - (this->y * other.x);
+
+	return theResult;
+}
+
+
+
+
+
+//=================================================================
+//	Vector::operator- : Returns the difference between two vectors
+//---------------------------------------
+template< int D, typename T>
+
+Vector<D, T>	Vector<D, T>::operator-(const Vector<D, T>	&other)
+{
+	Vector<D, T> theResult;
+
+	for( int i=0; i< D; i++ )
+	{
+		theResult.coords[i] = this->coords[i] - other.coords[i];
+	}
+
+	return theResult;
+}
+
+
+
+
+
+//=================================================================
+//	Vector::operator[] : Returns an element of the vector
+//---------------------------------------
+template< int D, typename T>
+
+T& Vector<D, T>::operator[](size_t index)
+{
+	return coords[index];
 }
 
 #endif
