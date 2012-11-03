@@ -18,3 +18,7 @@ build
 *.la
 *.a
 *.lib
+
+
+# VS specific 
+proj/MSVS_2010/ipch
