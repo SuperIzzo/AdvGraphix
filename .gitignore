@@ -21,4 +21,5 @@ build
 
 
 # VS specific 
+*.suo
 proj/MSVS_2010/ipch
