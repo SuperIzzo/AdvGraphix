@@ -123,21 +123,13 @@ T Vector<D, T>::Length()
 
 
 //=================================================================
-//	Vector::operator+ : Returns the sum of two vectors
+//	Vector::Cross : Returns a normalized for of this vector
 //---------------------------------------
 template< int D, typename T>
-Vector<D, T>	Vector<D, T>::operator+(const Vector<D, T>	&other)
+Vector<D, T>	Vector<D, T>::Unit()
 {
-	Vector<D, T> theResult;
-
-	for( int i=0; i< D; i++ )
-	{
-		theResult.coords[i] = this->coords[i] + other.coords[i];
-	}
-
-	return theResult;
+	return (*this)/Length();
 }
-
 
 
 
@@ -164,6 +156,27 @@ Vector<3, T>	Vector<D, T>::Cross(const Vector<3, T>	&other)
 
 
 //=================================================================
+//	Vector::operator+ : Returns the sum of two vectors
+//---------------------------------------
+template< int D, typename T>
+
+Vector<D, T>	Vector<D, T>::operator+(const Vector<D, T>	&other)
+{
+	Vector<D, T> theResult;
+
+	for( int i=0; i< D; i++ )
+	{
+		theResult.coords[i] = this->coords[i] + other.coords[i];
+	}
+
+	return theResult;
+}
+
+
+
+
+
+//=================================================================
 //	Vector::operator- : Returns the difference between two vectors
 //---------------------------------------
 template< int D, typename T>
@@ -175,6 +188,48 @@ Vector<D, T>	Vector<D, T>::operator-(const Vector<D, T>	&other)
 	for( int i=0; i< D; i++ )
 	{
 		theResult.coords[i] = this->coords[i] - other.coords[i];
+	}
+
+	return theResult;
+}
+
+
+
+
+
+//=================================================================
+//	Vector::operator* : Vector-scalar multiplication
+//---------------------------------------
+template< int D, typename T>
+
+Vector<D, T>	Vector<D, T>::operator*(T scalar)
+{
+	Vector<D, T> theResult;
+
+	for( int i=0; i< D; i++ )
+	{
+		theResult.coords[i] = this->coords[i] * scalar;
+	}
+
+	return theResult;
+}
+
+
+
+
+
+//=================================================================
+//	Vector::operator* : Vector-scalar division
+//---------------------------------------
+template< int D, typename T>
+
+Vector<D, T>	Vector<D, T>::operator/(T scalar)
+{
+	Vector<D, T> theResult;
+
+	for( int i=0; i< D; i++ )
+	{
+		theResult.coords[i] = this->coords[i] / scalar;
 	}
 
 	return theResult;

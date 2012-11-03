@@ -29,10 +29,13 @@ public:
 	CoordType				Dot(const Vector<D, T>	 &other);
 	CoordType				Length();
 
+	Vector<D, T>			Unit();
 	Vector<3, T>			Cross(const Vector<3, T> &other);
 
 	Vector<D, T>			operator+(const Vector<D, T>	&other);
 	Vector<D, T>			operator-(const Vector<D, T>	&other);
+	Vector<D, T>			operator*(T scalar);
+	Vector<D, T>			operator/(T scalar);
 	CoordType&				operator[] (size_t index);
 
 

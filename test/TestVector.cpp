@@ -94,7 +94,26 @@ SUITE( Vector )
 		CHECK_EQUAL( -10,	vectD.z );
 	}
 
+
+	TEST( TEST_vector_scalar_mult_and_div_general_case )
+	{
+		Vector3f vect(4, 8, -16);
+
+		Vector3f result = vect*2;
+
+		CHECK_EQUAL( 8,		result.x );
+		CHECK_EQUAL( 16,	result.y );
+		CHECK_EQUAL( -32,	result.z );
+		 
+
+		result = vect/4;
+
+		CHECK_EQUAL( 1,		result.x );
+		CHECK_EQUAL( 2,		result.y );
+		CHECK_EQUAL( -4,	result.z );
+	}
 	
+
 	TEST( TEST_vector_length_general_case )
 	{
 		Vector2f vect2f(3,4);
@@ -150,4 +169,21 @@ SUITE( Vector )
 		CHECK_EQUAL(  14,	vectC.y );
 		CHECK_EQUAL(  -5,	vectC.z );
 	}
+
+
+	TEST( TEST_vector_unit_general_case )
+	{
+		Vector3f vectA(10, -4, 6);
+
+		Vector3f result = vectA.Unit();
+
+		CHECK_CLOSE( 1.0f,		result.Length(),	0.01f );
+		CHECK_CLOSE( 0.811f,	result.x,			0.01f );
+		CHECK_CLOSE( -0.324f,	result.y,			0.01f );
+		CHECK_CLOSE( 0.487f,	result.z,			0.01f );
+	}
+
+
+	// The rotation...	2D :  r' = cos(Q)*r + sin(Q)* (n x r)
+	//					3D :  r' = a*(a.r) + rot2D( r-a*(a.r), a, Q)
 }
