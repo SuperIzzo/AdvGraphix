@@ -7,8 +7,8 @@
 #include <UnitTest++.h>
 #include <cstdio>
 
+#include <SFML/Graphics.hpp>
 
-int RunWnd();
 
 int main(int argc, char* args[])
 {
@@ -24,6 +24,6 @@ int main(int argc, char* args[])
 	}
 	else
 	{
-		return RunWnd();
+		sf::RenderWindow theWindow;
 	}
 }

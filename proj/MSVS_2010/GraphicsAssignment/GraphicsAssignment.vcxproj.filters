@@ -18,9 +18,6 @@
     <ClCompile Include="..\..\..\test\TestVector.cpp">
       <Filter>test</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\OGLWindow.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\VectorData.h">
