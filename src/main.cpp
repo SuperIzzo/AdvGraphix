@@ -7,7 +7,10 @@
 #include <UnitTest++.h>
 #include <cstdio>
 
-#include <SFML/Graphics.hpp>
+
+#include "App.h"
+
+
 
 
 int main(int argc, char* args[])
@@ -24,6 +27,8 @@ int main(int argc, char* args[])
 	}
 	else
 	{
-		sf::RenderWindow theWindow;
+		App theApp;
+
+		theApp.Run();
 	}
 }

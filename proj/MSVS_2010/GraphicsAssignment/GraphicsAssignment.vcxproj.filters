@@ -18,6 +18,12 @@
     <ClCompile Include="..\..\..\test\TestVector.cpp">
       <Filter>test</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\App.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Grid3D.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\VectorData.h">
@@ -27,6 +33,15 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\Vector.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Mesh.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\App.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Grid3D.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
