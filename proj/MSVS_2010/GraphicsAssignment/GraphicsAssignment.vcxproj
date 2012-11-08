@@ -11,14 +11,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\src\Graphics3D.cpp" />
     <ClCompile Include="..\..\..\src\Grid3D.cpp" />
     <ClCompile Include="..\..\..\src\main.cpp" />
+    <ClCompile Include="..\..\..\test\TestMatrix.cpp" />
     <ClCompile Include="..\..\..\test\TestVector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\App.h" />
+    <ClInclude Include="..\..\..\include\Graphics3D.h" />
     <ClInclude Include="..\..\..\include\Grid3D.h" />
+    <ClInclude Include="..\..\..\include\Matrix.h" />
     <ClInclude Include="..\..\..\include\Mesh.h" />
+    <ClInclude Include="..\..\..\include\TransformUtils.h" />
     <ClInclude Include="..\..\..\include\Vector.h" />
     <ClInclude Include="..\..\..\include\VectorData.h" />
     <ClCompile Include="..\..\..\src\App.cpp">
@@ -26,6 +31,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\include\Matrix.inl" />
+    <None Include="..\..\..\include\TransformUtils.inl" />
     <None Include="..\..\..\include\Vector.inl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

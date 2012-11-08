@@ -24,6 +24,12 @@
     <ClCompile Include="..\..\..\src\Grid3D.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\test\TestMatrix.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Graphics3D.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\VectorData.h">
@@ -44,9 +50,24 @@
     <ClInclude Include="..\..\..\include\Grid3D.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\Matrix.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Graphics3D.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\TransformUtils.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\include\Vector.inl">
+      <Filter>include</Filter>
+    </None>
+    <None Include="..\..\..\include\Matrix.inl">
+      <Filter>include</Filter>
+    </None>
+    <None Include="..\..\..\include\TransformUtils.inl">
       <Filter>include</Filter>
     </None>
   </ItemGroup>
