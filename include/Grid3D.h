@@ -19,7 +19,7 @@ public:
 						Grid3D();
 
 public:
-	void				Draw( Graphics3D g ) const;
+	void				Draw( Graphics3D &g ) const;
 };
 
 

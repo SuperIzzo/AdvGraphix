@@ -18,7 +18,7 @@ Grid3D::Grid3D()
 //=================================================================
 //	Grid3D::draw : Implement our drawing routine
 //---------------------------------------
-void Grid3D::Draw( Graphics3D g ) const
+void Grid3D::Draw( Graphics3D &g ) const
 {
 	const float GRID_SIZE   =						300;
 	const float NUM_SQUARES =						 10;
