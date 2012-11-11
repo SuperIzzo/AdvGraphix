@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\src\Camera.cpp" />
     <ClCompile Include="..\..\..\src\Graphics3D.cpp" />
     <ClCompile Include="..\..\..\src\Grid3D.cpp" />
     <ClCompile Include="..\..\..\src\main.cpp" />
@@ -19,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\App.h" />
+    <ClInclude Include="..\..\..\include\Camera.h" />
     <ClInclude Include="..\..\..\include\Graphics3D.h" />
     <ClInclude Include="..\..\..\include\Grid3D.h" />
     <ClInclude Include="..\..\..\include\Matrix.h" />

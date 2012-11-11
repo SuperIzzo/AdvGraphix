@@ -30,6 +30,9 @@
     <ClCompile Include="..\..\..\src\Graphics3D.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\Camera.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\VectorData.h">
@@ -57,6 +60,9 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\TransformUtils.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Camera.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
