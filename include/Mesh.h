@@ -2,25 +2,37 @@
 #define __MESH_H__
 
 #include <vector>
-#include "Vector.h"
 
+#include <SFML/Graphics/Color.hpp>
+
+#include "Vector.h"
+#include "Graphics3D.h"
 
 class Mesh
 {
-public:
-	
+public:	
 	class Facet
 	{
-	private:
-		
-		Mesh *					mMesh
+	public:
+		std::vector<int>	indices;
 	};
 
-	void	Load(const char* theVertexFile, const char* theIndexFile);
 
 public:
-	vector< Vector3f >		mVertices;
-	vector< Facet* >		mFacets;
+							Mesh();
+	void					Draw( Graphics3D &g ) const;
+
+private:
+	void					DrawFacet( Graphics3D &g, const Facet &theFacet ) const;
+
+
+public:
+	std::vector<Vector3f>	mVertices;
+	std::vector<Facet>		mFacets;
+
+private:
+	sf::Color				mColor;
 };
+
 
 #endif
