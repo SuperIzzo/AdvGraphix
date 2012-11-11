@@ -10,6 +10,12 @@
     <Filter Include="include">
       <UniqueIdentifier>{1f03ee46-4802-4b41-a920-e0dbd6958f1f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\Maths">
+      <UniqueIdentifier>{bf1db49a-93d4-4b2e-8128-56413f18b83b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\3D App">
+      <UniqueIdentifier>{a55f9a6f-dbbc-4849-b412-dd6de371b9be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\main.cpp">
@@ -33,49 +39,58 @@
     <ClCompile Include="..\..\..\src\Camera.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\VLFLMeshLoader.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Mesh.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\include\VectorData.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\Vector.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\Vector.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\Mesh.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\App.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\Grid3D.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\Matrix.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\Graphics3D.h">
-      <Filter>include</Filter>
+      <Filter>include\Maths</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\TransformUtils.h">
-      <Filter>include</Filter>
+      <Filter>include\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Vector.h">
+      <Filter>include\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\VectorData.h">
+      <Filter>include\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Graphics3D.h">
+      <Filter>include\3D App</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\Camera.h">
-      <Filter>include</Filter>
+      <Filter>include\3D App</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\App.h">
+      <Filter>include\3D App</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Grid3D.h">
+      <Filter>include\3D App</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Mesh.h">
+      <Filter>include\3D App</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\VLFLMeshLoader.h">
+      <Filter>include\3D App</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\include\Vector.inl">
-      <Filter>include</Filter>
-    </None>
+    <None Include="..\..\..\doc\Resources.txt" />
     <None Include="..\..\..\include\Matrix.inl">
-      <Filter>include</Filter>
+      <Filter>include\Maths</Filter>
     </None>
     <None Include="..\..\..\include\TransformUtils.inl">
-      <Filter>include</Filter>
+      <Filter>include\Maths</Filter>
     </None>
-    <None Include="..\..\..\doc\Resources.txt" />
+    <None Include="..\..\..\include\Vector.inl">
+      <Filter>include\Maths</Filter>
+    </None>
   </ItemGroup>
 </Project>
