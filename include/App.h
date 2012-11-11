@@ -8,6 +8,7 @@
 
 
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Window/Keyboard.hpp>
 #include "Graphics3D.h"
 #include "Camera.h"
 
@@ -15,17 +16,22 @@
 class App
 {
 public:
+							App();
 	void					Run();
 
 private:
 	void					Initialize();
 	void					HandleEvents();
+	void					HandleKeyPressedEvent( sf::Event &theEvent );
+	void					HandleKeyReleasedEvent( sf::Event &theEvent );
+	void					Update();
 	void					Render();
 
 private:
 	Camera					mCamera;
 	Graphics3D				mGraphics3D;
 	sf::RenderWindow		mRenderWindow;
+	bool					mKeyBuffer[sf::Keyboard::KeyCount];
 };
 
 

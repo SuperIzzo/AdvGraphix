@@ -7,6 +7,21 @@
 #include "TransformUtils.h"
 
 
+#include "VLFLMeshLoader.h";
+
+
+
+
+
+//=================================================================
+//	App::App
+//---------------------------------------
+App::App()
+{
+	memset( mKeyBuffer, 0, sizeof(mKeyBuffer) );
+}
+
+
 
 
 
@@ -20,6 +35,7 @@ void App::Run()
 	while( mRenderWindow.isOpen() )
 	{
 		HandleEvents();
+		Update();
 		Render();
 	}
 }
@@ -54,9 +70,87 @@ void App::HandleEvents()
 	sf::Event theEvent;
 	while( mRenderWindow.pollEvent( theEvent ) )
 	{
-		if( theEvent.type == sf::Event::Closed )
+		switch( theEvent.type )
 		{
-			mRenderWindow.close();
+			case sf::Event::Closed :
+				mRenderWindow.close();
+				break;
+
+			case sf::Event::KeyPressed  :
+				HandleKeyPressedEvent( theEvent );
+				break;
+
+			case sf::Event::KeyReleased :
+				HandleKeyReleasedEvent( theEvent );
+				break;
+		}
+	}
+}
+
+
+
+
+
+//=================================================================
+//	App::HandleKeyPressedEvent : Key pressed events handled here
+//---------------------------------------
+void App::HandleKeyPressedEvent( sf::Event &theEvent )
+{
+	mKeyBuffer[ theEvent.key.code ] = true;
+}
+
+
+
+
+
+//=================================================================
+//	App::HandleKeyReleasedEvent : Key released events handled here
+//---------------------------------------
+void App::HandleKeyReleasedEvent( sf::Event &theEvent )
+{
+	mKeyBuffer[ theEvent.key.code ] = false;
+}
+
+
+
+
+
+//=================================================================
+//	App::Update : Updates any logic 
+//---------------------------------------
+void App::Update()
+{
+	bool upKey		= mKeyBuffer[ sf::Keyboard::Up ];
+	bool downKey	= mKeyBuffer[ sf::Keyboard::Down ];
+	bool leftKey	= mKeyBuffer[ sf::Keyboard::Left ];
+	bool rightKey	= mKeyBuffer[ sf::Keyboard::Right ];
+
+	if( upKey || downKey || leftKey || rightKey )
+	{
+		float camSpeed = 3.0f;
+
+		Vector3f &camPos = mCamera.GetPosition();
+		Vector3f camDir = (mCamera.GetTarget() - camPos).Unit();
+		Vector3f camUp =  mCamera.GetUpVector();
+
+		Vector3f camRight =  camUp.Cross( camDir );
+
+		if( upKey )
+		{
+			camPos = camPos + camUp * camSpeed;
+		}
+		else if( downKey )
+		{
+			camPos = camPos - camUp * camSpeed;
+		}
+
+		if( rightKey )
+		{
+			camPos = camPos + camRight * camSpeed;
+		}
+		else if( leftKey )
+		{
+			camPos = camPos - camRight * camSpeed;
 		}
 	}
 }
@@ -70,6 +164,17 @@ void App::HandleEvents()
 //---------------------------------------
 void App::Render()
 {
+	static Mesh theMesh;
+	static bool meshLoaded = false;
+
+	if( !meshLoaded )
+	{
+		meshLoaded = VLFLMeshLoader::LoadMesh( theMesh, 
+			"M:\\Advance Computer Graphics\\Assignment 1\\AdvGraphix\\data\\house.vl", 
+			"M:\\Advance Computer Graphics\\Assignment 1\\AdvGraphix\\data\\house.fl");
+		mCamera.SetPosition( Vector3f(200,200,200) );
+	}
+
 	mCamera.Update();
 	mRenderWindow.clear();
 
@@ -78,8 +183,8 @@ void App::Render()
 	static float f = 0.00f;
 	f+=0.01f;
 
-	mCamera.SetPosition( Vector3f(200+f*5,200,200) );
-	mCamera.SetTarget( Vector3f(0, 0+f*5,0) );
+	//mCamera.SetPosition( Vector3f(200+f*5,200,200) );
+	//mCamera.SetTarget( Vector3f(0, 0+f*5,0) );
 	mCamera.SetUpVector( Vector3f(0,0,1) );
 	mCamera.Update();
 
@@ -94,6 +199,7 @@ void App::Render()
 	Grid3D grid;
 	grid.Draw( mGraphics3D );
 
+	theMesh.Draw( mGraphics3D );
 
 	mRenderWindow.display();
 }
