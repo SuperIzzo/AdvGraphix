@@ -10,7 +10,7 @@
 
 #include "App.h"
 
-
+#include "VLFLMeshLoader.h"
 
 
 int main(int argc, char* args[])
@@ -27,6 +27,15 @@ int main(int argc, char* args[])
 	}
 	else
 	{
+		/*
+		Mesh theMesh;
+		VLFLMeshLoader::LoadMesh( theMesh, 
+			"M:\\Advance Computer Graphics\\Assignment 1\\AdvGraphix\\data\\house.vl", 
+			"M:\\Advance Computer Graphics\\Assignment 1\\AdvGraphix\\data\\house.fl");
+
+		system( "pause" );
+		return 0;
+		*/
 		App theApp;
 
 		theApp.Run();
