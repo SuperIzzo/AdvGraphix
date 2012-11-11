@@ -9,6 +9,7 @@
 
 #include <SFML/Graphics/RenderWindow.hpp>
 #include "Graphics3D.h"
+#include "Camera.h"
 
 
 class App
@@ -22,6 +23,7 @@ private:
 	void					Render();
 
 private:
+	Camera					mCamera;
 	Graphics3D				mGraphics3D;
 	sf::RenderWindow		mRenderWindow;
 };

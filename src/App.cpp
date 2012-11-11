@@ -37,6 +37,9 @@ void App::Initialize()
 
 	// Link our 3D renderer to the 2D window
 	mGraphics3D.SetRenderTarget( mRenderWindow );
+
+	//Link our camera to the view matrix
+	mCamera.SetViewMatrix( &mGraphics3D.GetViewTransform() );
 }
 
 
@@ -67,47 +70,25 @@ void App::HandleEvents()
 //---------------------------------------
 void App::Render()
 {
+	mCamera.Update();
 	mRenderWindow.clear();
-	
+
 	// Drawing code here
 
-	TransformUtils::AddRotationZ(	mGraphics3D.GetViewTransform(), 0.01f );
-
-
-	Matrix4f persp;
-	TransformUtils::SetIdentity( persp );
-
-	//persp(1,3) = -1;
-	//persp(2,3) = -1;
-
-
-	Matrix4f & the3DView = mGraphics3D.GetViewTransform();
-
 	static float f = 0.00f;
-	f+=0.01;
+	f+=0.01f;
 
-	TransformUtils::SetIdentity(	the3DView );
+	mCamera.SetPosition( Vector3f(200+f*5,200,200) );
+	mCamera.SetTarget( Vector3f(0, 0+f*5,0) );
+	mCamera.SetUpVector( Vector3f(0,0,1) );
+	mCamera.Update();
 
-
-	// Perspective hack
-	persp(3,3) = 0.5;
-	persp(3,2) = 1/600;
-	
-	printf("%f\n", f);
-
-	TransformUtils::AddRotationZ(	the3DView, 45.0f + f);
-	TransformUtils::AddRotationX(	the3DView, 60.f );
-
-	the3DView = the3DView * persp;
-
-	TransformUtils::AddTranslation( the3DView, 300.f, 300.f, 0.0f );
-
-	TransformUtils::SetLookAt( the3DView, Vector3f(200+f*5,200,200), Vector3f(0, 0+f*5,0), Vector3f(0,0,1) );
-
-	the3DView = the3DView * persp;
 
 	// Final window adjustments
-	TransformUtils::AddTranslation( the3DView, mRenderWindow.getSize().x/2.f, mRenderWindow.getSize().y/2.f, 0.0f );
+	TransformUtils::AddTranslation( mGraphics3D.GetViewTransform(), 
+		mRenderWindow.getSize().x/2.f, 
+		mRenderWindow.getSize().y/2.f, 
+		0.0f );
 
 
 	Grid3D grid;
