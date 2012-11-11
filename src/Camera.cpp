@@ -12,7 +12,7 @@ Camera::Camera(Matrix4f * aViewMat) :
 
 
 
-const Vector3f& Camera::GetPosition()
+Vector3f& Camera::GetPosition()
 {
 	return mPosition;
 }
@@ -21,7 +21,7 @@ const Vector3f& Camera::GetPosition()
 
 
 
-const Vector3f& Camera::GetTarget()
+Vector3f& Camera::GetTarget()
 {
 	return mTarget;
 }
@@ -30,7 +30,7 @@ const Vector3f& Camera::GetTarget()
 
 
 
-const Vector3f& Camera::GetUpVector()
+Vector3f& Camera::GetUpVector()
 {
 	return mUp;
 }

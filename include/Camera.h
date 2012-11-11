@@ -21,9 +21,9 @@ public:
 	void					SetUpVector(const Vector3f &upVec);
 	void					SetViewMatrix(Matrix4f *viewMat);
 
-	const Vector3f &		GetPosition();
-	const Vector3f &		GetTarget();
-	const Vector3f &		GetUpVector();
+	Vector3f &				GetPosition();
+	Vector3f &				GetTarget();
+	Vector3f &				GetUpVector();
 	Matrix4f *				GetViewMatrix();
 
 	void					Update();
