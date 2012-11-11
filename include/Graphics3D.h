@@ -22,7 +22,11 @@ public:
 	void					SetRenderTarget( sf::RenderTarget &theTarget );
 	sf::RenderTarget *		GetRenderTarget();
 
+	void					SetViewTransform( const Matrix4f &theViewTransform );
+	Matrix4f &				GetViewTransform();
+
 	void					DrawLine( Vector3f p1,  Vector3f p2, sf::Color color = sf::Color::White );
+	void					DrawText( Vector3f pos, const char * text, sf::Color color = sf::Color::White );
 
 protected:
 

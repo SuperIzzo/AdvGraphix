@@ -6,25 +6,20 @@
 #ifndef __GRID3D_H__
 #define __GRID3D_H__
 
-
-#include <SFML\Graphics\Drawable.hpp>
-#include <SFML\Graphics\VertexArray.hpp>
+#include "Graphics3D.h"
 
 
 
 //=================================================================
 //	Class Grid3D
 //---------------------------------------
-class Grid3D : public sf::Drawable
+class Grid3D
 {
 public:
 						Grid3D();
 
-protected:
-	virtual void		draw(sf::RenderTarget& target, sf::RenderStates states) const;
-
-private:
-	sf::VertexArray		mLines;
+public:
+	void				Draw( Graphics3D g ) const;
 };
 
 

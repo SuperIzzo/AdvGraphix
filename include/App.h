@@ -8,6 +8,7 @@
 
 
 #include <SFML/Graphics/RenderWindow.hpp>
+#include "Graphics3D.h"
 
 
 class App
@@ -21,6 +22,7 @@ private:
 	void					Render();
 
 private:
+	Graphics3D				mGraphics3D;
 	sf::RenderWindow		mRenderWindow;
 };
 
