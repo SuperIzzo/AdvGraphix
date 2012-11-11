@@ -70,5 +70,6 @@
     <None Include="..\..\..\include\TransformUtils.inl">
       <Filter>include</Filter>
     </None>
+    <None Include="..\..\..\doc\Resources.txt" />
   </ItemGroup>
 </Project>

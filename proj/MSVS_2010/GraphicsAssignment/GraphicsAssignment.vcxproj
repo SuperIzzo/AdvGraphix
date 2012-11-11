@@ -31,6 +31,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\doc\Resources.txt" />
     <None Include="..\..\..\include\Matrix.inl" />
     <None Include="..\..\..\include\TransformUtils.inl" />
     <None Include="..\..\..\include\Vector.inl" />
