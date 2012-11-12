@@ -36,6 +36,8 @@ public:
 
 public:
 							Mesh();
+							
+	void					SetColor( const sf::Color &color);
 	void					Draw( Graphics3D &g ) const;
 
 private:
