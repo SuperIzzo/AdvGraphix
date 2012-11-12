@@ -27,6 +27,7 @@
     <ClInclude Include="..\..\..\include\Grid3D.h" />
     <ClInclude Include="..\..\..\include\Matrix.h" />
     <ClInclude Include="..\..\..\include\Mesh.h" />
+    <ClInclude Include="..\..\..\include\OBJMeshLoader.h" />
     <ClInclude Include="..\..\..\include\TransformUtils.h" />
     <ClInclude Include="..\..\..\include\Vector.h" />
     <ClInclude Include="..\..\..\include\VectorData.h" />
@@ -36,6 +37,9 @@
     <ClInclude Include="..\..\..\include\VLFLMeshLoader.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\doc\CS32310AssignmentTaskDescription.pdf" />
+    <None Include="..\..\..\doc\report\Latex\CS32310AssignmentReport.pdf" />
+    <None Include="..\..\..\doc\report\Latex\CS32310AssignmentReport.tex" />
     <None Include="..\..\..\doc\Resources.txt" />
     <None Include="..\..\..\include\Matrix.inl" />
     <None Include="..\..\..\include\TransformUtils.inl" />

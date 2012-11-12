@@ -7,6 +7,9 @@
     <Filter Include="test">
       <UniqueIdentifier>{23a42122-da32-4121-942e-8fc1d96c632d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="docs">
+      <UniqueIdentifier>{e7912679-9050-478a-b948-2e8f11020417}</UniqueIdentifier>
+    </Filter>
     <Filter Include="include">
       <UniqueIdentifier>{1f03ee46-4802-4b41-a920-e0dbd6958f1f}</UniqueIdentifier>
     </Filter>
@@ -15,6 +18,9 @@
     </Filter>
     <Filter Include="include\3D App">
       <UniqueIdentifier>{a55f9a6f-dbbc-4849-b412-dd6de371b9be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="docs\report">
+      <UniqueIdentifier>{25a3818f-6e67-4b7b-a329-60539ecd1a9c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -47,9 +53,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\include\Vector.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\Matrix.h">
       <Filter>include\Maths</Filter>
     </ClInclude>
@@ -80,9 +83,14 @@
     <ClInclude Include="..\..\..\include\VLFLMeshLoader.h">
       <Filter>include\3D App</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\OBJMeshLoader.h">
+      <Filter>include\3D App</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Vector.h">
+      <Filter>include\Maths</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\doc\Resources.txt" />
     <None Include="..\..\..\include\Matrix.inl">
       <Filter>include\Maths</Filter>
     </None>
@@ -91,6 +99,18 @@
     </None>
     <None Include="..\..\..\include\Vector.inl">
       <Filter>include\Maths</Filter>
+    </None>
+    <None Include="..\..\..\doc\CS32310AssignmentTaskDescription.pdf">
+      <Filter>docs</Filter>
+    </None>
+    <None Include="..\..\..\doc\Resources.txt">
+      <Filter>docs</Filter>
+    </None>
+    <None Include="..\..\..\doc\report\Latex\CS32310AssignmentReport.tex">
+      <Filter>docs\report</Filter>
+    </None>
+    <None Include="..\..\..\doc\report\Latex\CS32310AssignmentReport.pdf">
+      <Filter>docs\report</Filter>
     </None>
   </ItemGroup>
 </Project>
