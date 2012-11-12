@@ -11,6 +11,7 @@
 
 
 #include "VLFLMeshLoader.h";
+#include "OBJMeshLoader.h";
 
 
 
@@ -172,11 +173,18 @@ void App::Render()
 
 	if( !meshLoaded )
 	{
-		meshLoaded = VLFLMeshLoader::LoadMesh( theMesh, 
-			"M:\\Advance Computer Graphics\\Assignment 1\\AdvGraphix\\data\\house.vl", 
-			"M:\\Advance Computer Graphics\\Assignment 1\\AdvGraphix\\data\\house.fl");
+		//meshLoaded = VLFLMeshLoader::LoadMesh( theMesh, 
+		//	"M:\\Advance Computer Graphics\\Assignment 1\\AdvGraphix\\data\\house.vl", 
+		//	"M:\\Advance Computer Graphics\\Assignment 1\\AdvGraphix\\data\\house.fl");
+
+		theMesh.SetColor( sf::Color::Magenta );
+
+		meshLoaded = OBJMeshLoader::LoadMesh( theMesh, 
+			"M:\\Advance Computer Graphics\\Assignment 1\\AdvGraphix\\data\\books.obj"
+			);
+
 		mCamera.Position() = Vector3f(200,200,200);
-		mCamera.UpVector() = Vector3f(0,0,1);
+		mCamera.UpVector() = Vector3f(0,1,0);
 	}
 
 	mCamera.Update();

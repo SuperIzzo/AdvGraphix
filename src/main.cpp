@@ -17,6 +17,7 @@
 #include "App.h"
 
 #include "VLFLMeshLoader.h"
+#include "OBJMeshLoader.h"
 
 
 
@@ -38,16 +39,15 @@ int main(int argc, char* args[])
 		return result;
 	}
 	else
-	{
-		/*
-		Mesh theMesh;
-		VLFLMeshLoader::LoadMesh( theMesh, 
-			"M:\\Advance Computer Graphics\\Assignment 1\\AdvGraphix\\data\\house.vl", 
-			"M:\\Advance Computer Graphics\\Assignment 1\\AdvGraphix\\data\\house.fl");
+	{		
+		/*Mesh theMesh;
+		OBJMeshLoader::LoadMesh( theMesh, 
+			"M:\\Advance Computer Graphics\\Assignment 1\\AdvGraphix\\data\\vase.obj"
+			);
 
 		system( "pause" );
-		return 0;
-		*/
+		return 0;*/
+		
 		App theApp;
 
 		theApp.Run();
