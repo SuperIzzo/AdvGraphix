@@ -51,6 +51,9 @@
     <ClCompile Include="..\..\..\src\Mesh.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\OBJMeshLoader.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\Matrix.h">
@@ -100,17 +103,17 @@
     <None Include="..\..\..\include\Vector.inl">
       <Filter>include\Maths</Filter>
     </None>
-    <None Include="..\..\..\doc\CS32310AssignmentTaskDescription.pdf">
-      <Filter>docs</Filter>
-    </None>
-    <None Include="..\..\..\doc\Resources.txt">
-      <Filter>docs</Filter>
-    </None>
-    <None Include="..\..\..\doc\report\Latex\CS32310AssignmentReport.tex">
+    <None Include="..\..\..\docs\report\Latex\CS32310AssignmentReport.pdf">
       <Filter>docs\report</Filter>
     </None>
-    <None Include="..\..\..\doc\report\Latex\CS32310AssignmentReport.pdf">
+    <None Include="..\..\..\docs\report\Latex\CS32310AssignmentReport.tex">
       <Filter>docs\report</Filter>
+    </None>
+    <None Include="..\..\..\docs\CS32310AssignmentTaskDescription.pdf">
+      <Filter>docs</Filter>
+    </None>
+    <None Include="..\..\..\docs\Resources.txt">
+      <Filter>docs</Filter>
     </None>
   </ItemGroup>
 </Project>

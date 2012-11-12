@@ -16,6 +16,7 @@
     <ClCompile Include="..\..\..\src\Grid3D.cpp" />
     <ClCompile Include="..\..\..\src\main.cpp" />
     <ClCompile Include="..\..\..\src\Mesh.cpp" />
+    <ClCompile Include="..\..\..\src\OBJMeshLoader.cpp" />
     <ClCompile Include="..\..\..\src\VLFLMeshLoader.cpp" />
     <ClCompile Include="..\..\..\test\TestMatrix.cpp" />
     <ClCompile Include="..\..\..\test\TestVector.cpp" />
@@ -37,10 +38,10 @@
     <ClInclude Include="..\..\..\include\VLFLMeshLoader.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\doc\CS32310AssignmentTaskDescription.pdf" />
-    <None Include="..\..\..\doc\report\Latex\CS32310AssignmentReport.pdf" />
-    <None Include="..\..\..\doc\report\Latex\CS32310AssignmentReport.tex" />
-    <None Include="..\..\..\doc\Resources.txt" />
+    <None Include="..\..\..\docs\CS32310AssignmentTaskDescription.pdf" />
+    <None Include="..\..\..\docs\report\Latex\CS32310AssignmentReport.pdf" />
+    <None Include="..\..\..\docs\report\Latex\CS32310AssignmentReport.tex" />
+    <None Include="..\..\..\docs\Resources.txt" />
     <None Include="..\..\..\include\Matrix.inl" />
     <None Include="..\..\..\include\TransformUtils.inl" />
     <None Include="..\..\..\include\Vector.inl" />
