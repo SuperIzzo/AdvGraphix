@@ -1,3 +1,12 @@
+/*
+ * Author:		Hristoz Stefanov Stefanov
+ * Created:		11/11/2012
+ */
+
+
+
+
+
 //=================================================================
 //	Inlude
 //---------------------------------------
@@ -15,7 +24,9 @@
 //---------------------------------------
 bool VLFLMeshLoader::LoadMesh(Mesh &mesh, const char * vertListFname, const char * faceListFname)
 {
+	// Clear the mesh
 	mesh.mVertices.clear();
+	mesh.mFacets.clear();
 
 	std::ifstream vertListFile( vertListFname );
 	std::ifstream faceListFile( faceListFname );
