@@ -1,0 +1,23 @@
+Camera matrix
+http://www.cubic.org/docs/camera.htm
+http://www.gamedev.net/topic/481467-left-handed-lookat/
+
+
+World, view projection matrix 
+http://robertokoci.com/world-view-projection-matrix-unveiled/
+
+
+
+Misc Resources
+
+Free obj files
+http://www.chromesphere.com/3dmodels.html
+
+
+Latex
+
+Report Template
+https://engineering.purdue.edu/ECN/Support/KB/Docs/LaTeXSampleTemplateF
+
+Document Struture
+http://en.wikibooks.org/wiki/LaTeX/Document_Structure

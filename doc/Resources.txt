@@ -1,7 +1,0 @@
-Camera matrix
-http://www.cubic.org/docs/camera.htm
-http://www.gamedev.net/topic/481467-left-handed-lookat/
-
-
-World, view projection matrix 
-http://robertokoci.com/world-view-projection-matrix-unveiled/
