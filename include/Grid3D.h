@@ -2,10 +2,16 @@
  * Author:		Hristoz Stefanov Stefanov
  * Created:		05/11/2012
  */
-
 #ifndef __GRID3D_H__
 #define __GRID3D_H__
 
+
+
+
+
+//=================================================================
+//	Inlude
+//---------------------------------------
 #include "Graphics3D.h"
 
 

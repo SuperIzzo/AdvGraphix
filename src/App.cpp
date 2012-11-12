@@ -1,3 +1,6 @@
+//=================================================================
+//	Inlude
+//---------------------------------------
 #include "App.h"
 
 #include <SFML/Window/Event.hpp>
@@ -55,7 +58,7 @@ void App::Initialize()
 	mGraphics3D.SetRenderTarget( mRenderWindow );
 
 	//Link our camera to the view matrix
-	mCamera.SetViewMatrix( &mGraphics3D.GetViewTransform() );
+	mCamera.SetViewMatrix( &mGraphics3D.ViewTransform() );
 }
 
 
@@ -129,9 +132,9 @@ void App::Update()
 	{
 		float camSpeed = 3.0f;
 
-		Vector3f &camPos = mCamera.GetPosition();
-		Vector3f camDir = (mCamera.GetTarget() - camPos).Unit();
-		Vector3f camUp =  mCamera.GetUpVector();
+		Vector3f &camPos = mCamera.Position();
+		Vector3f camDir = (mCamera.Target() - camPos).Unit();
+		Vector3f camUp =  mCamera.UpVector();
 
 		Vector3f camRight =  camUp.Cross( camDir );
 
@@ -172,7 +175,8 @@ void App::Render()
 		meshLoaded = VLFLMeshLoader::LoadMesh( theMesh, 
 			"M:\\Advance Computer Graphics\\Assignment 1\\AdvGraphix\\data\\house.vl", 
 			"M:\\Advance Computer Graphics\\Assignment 1\\AdvGraphix\\data\\house.fl");
-		mCamera.SetPosition( Vector3f(200,200,200) );
+		mCamera.Position() = Vector3f(200,200,200);
+		mCamera.UpVector() = Vector3f(0,0,1);
 	}
 
 	mCamera.Update();
@@ -185,12 +189,11 @@ void App::Render()
 
 	//mCamera.SetPosition( Vector3f(200+f*5,200,200) );
 	//mCamera.SetTarget( Vector3f(0, 0+f*5,0) );
-	mCamera.SetUpVector( Vector3f(0,0,1) );
 	mCamera.Update();
 
 
 	// Final window adjustments
-	TransformUtils::AddTranslation( mGraphics3D.GetViewTransform(), 
+	TransformUtils::AddTranslation( mGraphics3D.ViewTransform(), 
 		mRenderWindow.getSize().x/2.f, 
 		mRenderWindow.getSize().y/2.f, 
 		0.0f );

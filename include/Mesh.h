@@ -1,13 +1,29 @@
+/*
+ * Author:		Hristoz Stefanov Stefanov
+ * Created:		03/11/2012
+ */
 #ifndef __MESH_H__
 #define __MESH_H__
 
+
+
+
+
+//=================================================================
+//	Inlude
+//---------------------------------------
 #include <vector>
-
 #include <SFML/Graphics/Color.hpp>
-
 #include "Vector.h"
 #include "Graphics3D.h"
 
+
+
+
+
+//=================================================================
+//	Class Mesh
+//---------------------------------------
 class Mesh
 {
 public:	
@@ -33,6 +49,9 @@ public:
 private:
 	sf::Color				mColor;
 };
+
+
+
 
 
 #endif

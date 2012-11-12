@@ -7,23 +7,32 @@
 #define __CAMERA_H__
 
 
+
+
+
+//=================================================================
+//	Inlude
+//---------------------------------------
 #include "Vector.h"
 #include "Matrix.h"
 
 
+
+
+
+//=================================================================
+//	Class Camera
+//---------------------------------------
 class Camera
 {
 public:
 							Camera(Matrix4f * aViewMat = 0);
 
-	void					SetPosition(const Vector3f &pos);
-	void					SetTarget(const Vector3f &target);
-	void					SetUpVector(const Vector3f &upVec);
-	void					SetViewMatrix(Matrix4f *viewMat);
+	Vector3f &				Position();
+	Vector3f &				Target();
+	Vector3f &				UpVector();
 
-	Vector3f &				GetPosition();
-	Vector3f &				GetTarget();
-	Vector3f &				GetUpVector();
+	void					SetViewMatrix(Matrix4f *viewMat);
 	Matrix4f *				GetViewMatrix();
 
 	void					Update();
@@ -34,6 +43,8 @@ private:
 	Vector3f				mTarget;
 	Vector3f				mUp;
 };
+
+
 
 
 

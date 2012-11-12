@@ -1,9 +1,18 @@
+//=================================================================
+//	Inlude
+//---------------------------------------
 #include "VLFLMeshLoader.h"
 #include <fstream>
 
-
 #include <iostream>
 
+
+
+
+
+//=================================================================
+//	VLFLMeshLoader::LoadMesh : loads mesh data from vl and fl files
+//---------------------------------------
 bool VLFLMeshLoader::LoadMesh(Mesh &mesh, const char * vertListFname, const char * faceListFname)
 {
 	mesh.mVertices.clear();
@@ -24,6 +33,8 @@ bool VLFLMeshLoader::LoadMesh(Mesh &mesh, const char * vertListFname, const char
 
 			mesh.mVertices.push_back( theVertex );
 
+
+			// DEBUG STUFF
 			numVerts++;
 			std::cout << "Vertex " << numVerts << ":\tx=" <<
 				theVertex.x << "\ty=" <<
@@ -31,7 +42,6 @@ bool VLFLMeshLoader::LoadMesh(Mesh &mesh, const char * vertListFname, const char
 				theVertex.z << std::endl;
 		}
 	}
-
 
 	if( faceListFile.is_open() )
 	{
@@ -64,7 +74,7 @@ bool VLFLMeshLoader::LoadMesh(Mesh &mesh, const char * vertListFname, const char
 					newFace = true;
 
 
-
+					// DEBUG STUFF
 					numFacets++;
 					std::cout << "Facet " << numFacets 
 						<< " (v " << theFacet.indices.size() << "):\t" 

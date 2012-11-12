@@ -1,8 +1,16 @@
+//=================================================================
+//	Inlude
+//---------------------------------------
 #include "Camera.h"
 #include "TransformUtils.h"
 
 
 
+
+
+//=================================================================
+//	Camera::Camera
+//---------------------------------------
 Camera::Camera(Matrix4f * aViewMat) :
 	mViewMatrix(aViewMat)
 {
@@ -12,7 +20,10 @@ Camera::Camera(Matrix4f * aViewMat) :
 
 
 
-Vector3f& Camera::GetPosition()
+//=================================================================
+//	Camera::Position : the camera position
+//---------------------------------------
+Vector3f& Camera::Position()
 {
 	return mPosition;
 }
@@ -21,7 +32,10 @@ Vector3f& Camera::GetPosition()
 
 
 
-Vector3f& Camera::GetTarget()
+//=================================================================
+//	Camera::Target : the camera target
+//---------------------------------------
+Vector3f& Camera::Target()
 {
 	return mTarget;
 }
@@ -30,7 +44,10 @@ Vector3f& Camera::GetTarget()
 
 
 
-Vector3f& Camera::GetUpVector()
+//=================================================================
+//	Camera::UpVector : the camera up vector
+//---------------------------------------
+Vector3f& Camera::UpVector()
 {
 	return mUp;
 }
@@ -39,6 +56,9 @@ Vector3f& Camera::GetUpVector()
 
 
 
+//=================================================================
+//	Camera::GetViewMatrix : the view camera associated matrix
+//---------------------------------------
 Matrix4f * Camera::GetViewMatrix()
 {
 	return mViewMatrix;
@@ -48,33 +68,9 @@ Matrix4f * Camera::GetViewMatrix()
 
 
 
-void Camera::SetPosition(const Vector3f &pos)
-{
-	mPosition = pos;
-}
-
-
-
-
-
-void Camera::SetTarget(const Vector3f &target)
-{
-	mTarget = target;
-}
-
-
-
-
-
-void Camera::SetUpVector(const Vector3f &upVec)
-{
-	mUp = upVec;
-}
-
-
-
-
-
+//=================================================================
+//	Camera::SetViewMatrix : associate the camera with a matrix
+//---------------------------------------
 void Camera::SetViewMatrix(Matrix4f *theMat)
 {
 	mViewMatrix = theMat;
@@ -84,6 +80,9 @@ void Camera::SetViewMatrix(Matrix4f *theMat)
 
 
 
+//=================================================================
+//	Camera::Update : updates the view matrix
+//---------------------------------------
 void Camera::Update()
 {
 	if( mViewMatrix )

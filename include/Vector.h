@@ -7,11 +7,22 @@
 #define __VECTOR_H__
 
 
+
+
+
+//=================================================================
+//	Inlude
+//---------------------------------------
 #include "VectorData.h"
 
 
-template< int D, typename T >
 
+
+
+//=================================================================
+//	Class Vector
+//---------------------------------------
+template< int D, typename T >
 struct Vector	: public VectorData<D, T>
 {
 public:
@@ -37,12 +48,15 @@ public:
 	Vector<D, T>			operator*(T scalar);
 	Vector<D, T>			operator/(T scalar);
 	CoordType&				operator[] (size_t index);
-
-
 };
 
 
 
+
+
+//=================================================================
+//	Type definitions
+//---------------------------------------
 // Float vectors
 typedef Vector<1, float> Vector1f;
 typedef Vector<2, float> Vector2f;
@@ -62,7 +76,16 @@ typedef Vector<3, int> Vector3i;
 typedef Vector<4, int> Vector4i;
 
 
-// The implementation
+
+
+
+//=================================================================
+//	Inline implementation
+//---------------------------------------
 #include "Vector.inl"
+
+
+
+
 
 #endif

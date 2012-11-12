@@ -1,5 +1,24 @@
+/*
+ * Author:		Hristoz Stefanov Stefanov
+ * Created:		08/11/2012
+ */
+
+
+
+
+
+//=================================================================
+//	Inlude
+//---------------------------------------
 #include <cmath>
 
+
+
+
+
+//=================================================================
+//	TransformUtils::DegToRad() : converts from degrees to radians
+//---------------------------------------
 template< typename T>
 double TransformUtils::DegToRad( T deg )
 {
@@ -11,6 +30,9 @@ double TransformUtils::DegToRad( T deg )
 
 
 
+//=================================================================
+//	TransformUtils::RadToDeg() : converts from radians to degrees
+//---------------------------------------
 template< typename T>
 T TransformUtils::RadToDeg( double rad )
 {
@@ -22,6 +44,9 @@ T TransformUtils::RadToDeg( double rad )
 
 
 
+//=================================================================
+//	TransformUtils::SetIdentity() : sets the matrix to identity
+//---------------------------------------
 template< int I, typename T>
 void TransformUtils::SetIdentity(Matrix<I,I, T> &theMatrix)
 {
@@ -45,6 +70,9 @@ void TransformUtils::SetIdentity(Matrix<I,I, T> &theMatrix)
 
 
 
+//=================================================================
+//	TransformUtils::SetTranslation() : sets the matrix to shift
+//---------------------------------------
 template< typename T >
 void TransformUtils::SetTranslation(Matrix<4,4, T> &theMatrix, T x, T y, T z)
 {
@@ -58,6 +86,9 @@ void TransformUtils::SetTranslation(Matrix<4,4, T> &theMatrix, T x, T y, T z)
 
 
 
+//=================================================================
+//	TransformUtils::SetScale() : sets the matrix to scale
+//---------------------------------------
 template< typename T >
 void TransformUtils::SetScale(Matrix<4,4, T> &theMatrix, T sx, T sy, T sz)
 {
@@ -71,6 +102,9 @@ void TransformUtils::SetScale(Matrix<4,4, T> &theMatrix, T sx, T sy, T sz)
 
 
 
+//=================================================================
+//	TransformUtils::SetRotationX() : sets rotation around the X axis
+//---------------------------------------
 template< typename T >
 void TransformUtils::SetRotationX(Matrix<4,4, T> &theMatrix, T rx)
 {
@@ -86,6 +120,9 @@ void TransformUtils::SetRotationX(Matrix<4,4, T> &theMatrix, T rx)
 
 
 
+//=================================================================
+//	TransformUtils::SetRotationY() : sets rotation around the Y axis
+//---------------------------------------
 template< typename T >
 void TransformUtils::SetRotationY(Matrix<4,4, T> &theMatrix, T ry)
 {
@@ -102,7 +139,9 @@ void TransformUtils::SetRotationY(Matrix<4,4, T> &theMatrix, T ry)
 
 
 
-
+//=================================================================
+//	TransformUtils::SetRotationZ() : sets rotation around the Z axis
+//---------------------------------------
 template< typename T >
 void TransformUtils::SetRotationZ(Matrix<4,4, T> &theMatrix, T rz)
 {
@@ -119,6 +158,9 @@ void TransformUtils::SetRotationZ(Matrix<4,4, T> &theMatrix, T rz)
 
 
 
+//=================================================================
+//	TransformUtils::AddTranslation() : adds shift to the matrix
+//---------------------------------------
 template< typename T >
 void TransformUtils::AddTranslation(Matrix<4,4, T> &theMatrix, T x, T y, T z)
 {
@@ -131,6 +173,9 @@ void TransformUtils::AddTranslation(Matrix<4,4, T> &theMatrix, T x, T y, T z)
 
 
 
+//=================================================================
+//	TransformUtils::AddRotationX() : adds rotation around the X axis
+//---------------------------------------
 template< typename T >
 void TransformUtils::AddRotationX(Matrix<4,4, T> &theMatrix, T rx)
 {
@@ -144,6 +189,9 @@ void TransformUtils::AddRotationX(Matrix<4,4, T> &theMatrix, T rx)
 
 
 
+//=================================================================
+//	TransformUtils::AddRotationY() : adds rotation around the Y axis
+//---------------------------------------
 template< typename T >
 void TransformUtils::AddRotationY(Matrix<4,4, T> &theMatrix, T ry)
 {
@@ -157,6 +205,9 @@ void TransformUtils::AddRotationY(Matrix<4,4, T> &theMatrix, T ry)
 
 
 
+//=================================================================
+//	TransformUtils::AddRotationZ() : adds rotation around the Z axis
+//---------------------------------------
 template< typename T >
 void TransformUtils::AddRotationZ(Matrix<4,4, T> &theMatrix, T rz)
 {
@@ -170,6 +221,9 @@ void TransformUtils::AddRotationZ(Matrix<4,4, T> &theMatrix, T rz)
 
 
 
+//=================================================================
+//	TransformUtils::SetLookAt() : sets a camera view matrix
+//---------------------------------------
 template< typename T >
 void TransformUtils::SetLookAt(Matrix<4,4, T> &theMatrix, Vector<3, T> eye, Vector<3, T> lookAt, Vector<3, T> up, bool leftHanded )
 {

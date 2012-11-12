@@ -1,3 +1,15 @@
+/*
+ * Author:		Hristoz Stefanov Stefanov
+ * Created:		05/11/2012
+ */
+
+
+
+
+
+//=================================================================
+//	Inlude
+//---------------------------------------
 #include "Grid3D.h"
 
 
@@ -16,7 +28,7 @@ Grid3D::Grid3D()
 
 
 //=================================================================
-//	Grid3D::draw : Implement our drawing routine
+//	Grid3D::draw : implement our drawing routine
 //---------------------------------------
 void Grid3D::Draw( Graphics3D &g ) const
 {

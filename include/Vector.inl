@@ -2,13 +2,10 @@
  * Author:		Hristoz Stefanov Stefanov
  * Created:		29/10/2012
  */
-
-#ifndef __VECTOR_INL__
-#define __VECTOR_INL__
-
-
-
 #define STATIC_ASSERT( cond, desc )		int desc[cond]; (void) desc;
+
+
+
 
 
 //=================================================================
@@ -248,5 +245,3 @@ T& Vector<D, T>::operator[](size_t index)
 {
 	return coords[index];
 }
-
-#endif

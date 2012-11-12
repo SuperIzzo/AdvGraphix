@@ -7,14 +7,25 @@
 #define __MATRIX_H__
 
 
+
+
+
+//=================================================================
+//	Inlude
+//---------------------------------------
 #include "Vector.h"
 
 
+
+
+
+//=================================================================
+//	Class Matrix
+//---------------------------------------
 template< int ROW, int COL, typename T >
 class Matrix
 {
 public:
-							//Matrix();
 	T&						operator()(size_t r, size_t c);
 	Matrix<ROW, COL,T>		operator+(const Matrix<ROW,COL,T> &other);
 
@@ -29,11 +40,24 @@ private:
 
 
 
+
+//=================================================================
+//	Type definitions
+//---------------------------------------
 typedef Matrix<3,3, float>		Matrix3f;
 typedef Matrix<4,4, float>		Matrix4f;
 
 
+
+
+
+//=================================================================
+//	Inline implementation
+//---------------------------------------
 #include "Matrix.inl"
+
+
+
 
 
 #endif

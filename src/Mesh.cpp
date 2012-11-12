@@ -1,8 +1,24 @@
+/*
+ * Author:		Hristoz Stefanov Stefanov
+ * Created:		11/11/2012
+ */
+
+
+
+
+
+//=================================================================
+//	Inlude
+//---------------------------------------
 #include "Mesh.h"
 
 
 
 
+
+//=================================================================
+//	Mesh::Mesh
+//---------------------------------------
 Mesh::Mesh() :
 	mColor( sf::Color::White )
 {
@@ -12,6 +28,9 @@ Mesh::Mesh() :
 
 
 
+//=================================================================
+//	Mesh::Draw : draw our mesh on the 3D canvas
+//---------------------------------------
 void Mesh::Draw( Graphics3D &g ) const
 {
 	for( int i=0; i<mFacets.size(); i++ )
@@ -24,6 +43,9 @@ void Mesh::Draw( Graphics3D &g ) const
 
 
 
+//=================================================================
+//	Mesh::DrawFacet : draw a single facet on the 3D canvas
+//---------------------------------------
 void Mesh::DrawFacet( Graphics3D &g, const Facet &theFacet ) const
 {
 	// Draw the first line

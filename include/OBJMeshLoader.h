@@ -1,9 +1,9 @@
 /*
  * Author:		Hristoz Stefanov Stefanov
- * Created:		11/11/2012
+ * Created:		12/11/2012
  */
-#ifndef __VLFLMESHLOADER_H__
-#define __VLFLMESHLOADER_H__
+#ifndef __OBJMESHLOADER_H__
+#define __OBJMESHLOADER_H__
 
 
 
@@ -19,12 +19,12 @@
 
 
 //=================================================================
-//	Class VLFLMeshLoader
+//	Class OBJMeshLoader
 //---------------------------------------
-class VLFLMeshLoader
+class OBJMeshLoader
 {
 public:
-	static bool				LoadMesh(Mesh &mesh, const char * vertListFname, const char * faceListFname);
+	static bool				LoadMesh(Mesh &mesh, const char * objFname);
 };
 
 

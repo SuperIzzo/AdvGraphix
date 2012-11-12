@@ -7,12 +7,23 @@
 #define __APP_H__
 
 
+
+
+
+//=================================================================
+//	Inlude
+//---------------------------------------
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Keyboard.hpp>
 #include "Graphics3D.h"
 #include "Camera.h"
 
 
+
+
+//=================================================================
+//	Class App
+//---------------------------------------
 class App
 {
 public:
@@ -33,6 +44,9 @@ private:
 	sf::RenderWindow		mRenderWindow;
 	bool					mKeyBuffer[sf::Keyboard::KeyCount];
 };
+
+
+
 
 
 #endif

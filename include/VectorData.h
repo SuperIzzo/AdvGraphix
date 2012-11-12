@@ -17,7 +17,7 @@
 
 
 //=================================================================
-//	VectorData<D, T> : General vector data definition
+//	Class VectorData<D, T> : General vector data definition
 //---------------------------------------
 template< int dimensions, typename Type >
 struct VectorData
@@ -38,7 +38,7 @@ struct VectorData
 
 
 //=================================================================
-//	VectorData<1, T> : One-dimensional vector data
+//	Class VectorData<1, T> : One-dimensional vector data
 //---------------------------------------
 template< typename Type >
 struct VectorData<1, Type>
@@ -58,7 +58,7 @@ struct VectorData<1, Type>
 
 
 //=================================================================
-//	VectorData<2, T> : Two-dimensional vector data
+//	Class VectorData<2, T> : Two-dimensional vector data
 //---------------------------------------
 template< typename Type >
 struct VectorData<2, Type>
@@ -82,7 +82,7 @@ struct VectorData<2, Type>
 
 
 //=================================================================
-//	VectorData<3, T> : Three-dimensional vector data
+//	Class VectorData<3, T> : Three-dimensional vector data
 //---------------------------------------
 template< typename Type >
 struct VectorData<3, Type>
@@ -107,7 +107,7 @@ struct VectorData<3, Type>
 
 
 //=================================================================
-//	VectorData<4, T> : Four-dimensional vector data
+//	Class VectorData<4, T> : Four-dimensional vector data
 //---------------------------------------
 template< typename Type >
 struct VectorData<4, Type>
@@ -127,6 +127,7 @@ struct VectorData<4, Type>
 	VectorData() : x( 0 ), y( 0 ), z( 0 ), w( 0 ) {};
 	VectorData( Type aX, Type aY, Type aZ, Type aW ) : x( aX ), y( aY ), z( aZ ), w( aW ) {};
 };
+
 
 
 

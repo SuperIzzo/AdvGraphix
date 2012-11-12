@@ -3,16 +3,28 @@
  * Created:		29/10/2012
  */
 
+
+
+
+
+//=================================================================
+//	Inlude
+//---------------------------------------
 #include <Windows.h>
 #include <UnitTest++.h>
 #include <cstdio>
-
 
 #include "App.h"
 
 #include "VLFLMeshLoader.h"
 
 
+
+
+
+//=================================================================
+//	main
+//---------------------------------------
 int main(int argc, char* args[])
 {
 	if ( argc > 1   &&   strcmp("-test", args[1])==0 )

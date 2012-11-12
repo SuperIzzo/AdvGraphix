@@ -1,3 +1,6 @@
+//=================================================================
+//	Inlude
+//---------------------------------------
 #include "Graphics3D.h"
 
 #include <SFML/Graphics/VertexArray.hpp>
@@ -6,6 +9,12 @@
 #include "TransformUtils.h"
 
 
+
+
+
+//=================================================================
+//	Graphics3D::Graphics3D
+//---------------------------------------
 Graphics3D::Graphics3D()
 	: mRenderTarget(0)
 {
@@ -16,6 +25,9 @@ Graphics3D::Graphics3D()
 
 
 
+//=================================================================
+//	Graphics3D::Graphics3D
+//---------------------------------------
 Graphics3D::Graphics3D( sf::RenderTarget &theTarget )
 	: mRenderTarget(&theTarget)
 {
@@ -26,6 +38,9 @@ Graphics3D::Graphics3D( sf::RenderTarget &theTarget )
 
 
 
+//=================================================================
+//	Graphics3D::SetRenderTarget : sets a 2D SFML rendering target
+//---------------------------------------
 void Graphics3D::SetRenderTarget( sf::RenderTarget &theTarget )
 {
 	mRenderTarget = &theTarget;
@@ -35,6 +50,9 @@ void Graphics3D::SetRenderTarget( sf::RenderTarget &theTarget )
 
 
 
+//=================================================================
+//	Graphics3D::SetRenderTarget : returns the 2D SFML rendering target
+//---------------------------------------
 sf::RenderTarget * Graphics3D::GetRenderTarget()
 {
 	return mRenderTarget;
@@ -44,16 +62,10 @@ sf::RenderTarget * Graphics3D::GetRenderTarget()
 
 
 
-void Graphics3D::SetViewTransform( const Matrix4f &theViewTransform )
-{
-	mViewTransform = theViewTransform;
-}
-
-
-
-
-
-Matrix4f & Graphics3D::GetViewTransform()
+//=================================================================
+//	Graphics3D::ViewTransform : the view transform matrix
+//---------------------------------------
+Matrix4f & Graphics3D::ViewTransform()
 {
 	return mViewTransform;
 }
@@ -62,6 +74,9 @@ Matrix4f & Graphics3D::GetViewTransform()
 
 
 
+//=================================================================
+//	Graphics3D::DrawLine : draws a 3D line
+//---------------------------------------
 void Graphics3D::DrawLine( Vector3f p1,  Vector3f p2, sf::Color color )
 {
 	if( mRenderTarget )
@@ -71,9 +86,13 @@ void Graphics3D::DrawLine( Vector3f p1,  Vector3f p2, sf::Color color )
 
 		sf::VertexArray theLine;
 		theLine.setPrimitiveType( sf::PrimitiveType::Lines );
+
 		theLine.resize(2);
 		theLine[0] = sf::Vertex( sf::Vector2f(outputP1.x, outputP1.y),	color );
 		theLine[1] = sf::Vertex( sf::Vector2f(outputP2.x, outputP2.y),	color );
+
+		// NOTE: For now we ignore the z voordinate
+		// It could however be used with a depth buffer 
 
 		mRenderTarget->draw( theLine );
 	}
@@ -83,6 +102,9 @@ void Graphics3D::DrawLine( Vector3f p1,  Vector3f p2, sf::Color color )
 
 
 
+//=================================================================
+//	Graphics3D::DrawText : draws text at a 3D point
+//---------------------------------------
 void Graphics3D::DrawText( Vector3f pos, const char * text, sf::Color color )
 {
 	if( mRenderTarget )
@@ -102,6 +124,9 @@ void Graphics3D::DrawText( Vector3f pos, const char * text, sf::Color color )
 
 
 
+//=================================================================
+//	Graphics3D::TransformPoint : transforms a vector according to the view
+//---------------------------------------
 Vector3f Graphics3D::TransformPoint( const Vector3f &p )
 {
 	Vector3f theResult;
