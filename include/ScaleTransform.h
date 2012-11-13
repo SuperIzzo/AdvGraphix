@@ -39,6 +39,12 @@ public:
 		// p0 = p + (a-1)*s*(s.p)
 		return point + direction * (alpha - 1.0f) * direction.Dot(point);
 	}
+
+
+	virtual	void			Display(std::ostream &os)
+	{
+		os << "Scale s=(" << direction.x << ", " << direction.y << ", " << direction.z << ")  a=" << alpha;
+	}
 };
 
 

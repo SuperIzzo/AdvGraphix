@@ -35,6 +35,12 @@ public:
 	{
 		return point + shift;
 	}
+
+
+	virtual	void			Display(std::ostream &os)
+	{
+		os << "Shift t=(" << shift.x << ", " << shift.y << ", " << shift.z << ")";
+	}
 };
 
 

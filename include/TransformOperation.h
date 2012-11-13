@@ -26,6 +26,7 @@ class TransformOperation
 {
 public:
 	virtual Vector3f		Transform(const Vector3f &point) = 0;
+	virtual	void			Display(std::ostream &os) = 0;
 
 	inline  Vector3f		operator()(const Vector3f &point)
 	{
