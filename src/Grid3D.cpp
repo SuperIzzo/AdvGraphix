@@ -19,8 +19,47 @@
 //=================================================================
 //	Grid3D::Grid3D
 //---------------------------------------
-Grid3D::Grid3D() 
+Grid3D::Grid3D() :
+	mGridSize(100, 100, 100),
+	mSquareSpacing(10, 10, 10)
 {
+	
+}
+
+
+
+
+
+//=================================================================
+//	Grid3D::GridOrigin : the grid origin
+//---------------------------------------
+Vector3f& Grid3D::Position() 
+{
+	return mGridPosition;
+}
+
+
+
+
+
+//=================================================================
+//	Grid3D::GridSize : the grid size
+//---------------------------------------
+Vector3f& Grid3D::Size() 
+{
+	return mGridSize;
+}
+
+
+
+
+
+//=================================================================
+//	Grid3D::SquareSize : the size of the squares
+//---------------------------------------
+Vector3f& Grid3D::Spacing()
+{
+	return mSquareSpacing;
 }
 
 
@@ -32,30 +71,39 @@ Grid3D::Grid3D()
 //---------------------------------------
 void Grid3D::Draw( Graphics3D &g ) const
 {
-	const float GRID_SIZE   =						300;
-	const float NUM_SQUARES =						 10;
-	const float SQUARE_SIZE =	GRID_SIZE / NUM_SQUARES;
 
 	Vector3f vecOrigin( 0, 0, 0 );
 
-	Vector3f vecAxisX(	GRID_SIZE, 0, 0 );
-	Vector3f vecAxisY(	0, GRID_SIZE, 0 );
-	Vector3f vecAxisZ(	0, 0, GRID_SIZE );
+	Vector3f vecAxisX(	mGridSize.x, 0, 0 );
+	Vector3f vecAxisY(	0, mGridSize.y, 0 );
+	Vector3f vecAxisZ(	0, 0, mGridSize.y );
 
-	for( int i = 1; i <= NUM_SQUARES; i++ )
+	float numSquareX = mGridSize.x / mSquareSpacing.x;
+	float numSquareY = mGridSize.y / mSquareSpacing.y;
+	float numSquareZ = mGridSize.z / mSquareSpacing.z;
+
+	for( int i = 0; i <= numSquareX; i++ )
 	{
-		Vector3f xOffset( (i-3)*SQUARE_SIZE, 0, 0 );
-		Vector3f yOffset( 0, i*SQUARE_SIZE, 0 );
-		Vector3f zOffset( 0, 0, i *SQUARE_SIZE);
+		Vector3f xOffset( (i)*mSquareSpacing.x, 0, 0 );
 
-		g.DrawLine( vecOrigin+yOffset, vecAxisX+yOffset );
-		g.DrawLine( vecOrigin+zOffset, vecAxisX+zOffset );
+		g.DrawLine( mGridPosition+xOffset, mGridPosition + vecAxisY+xOffset );
+		g.DrawLine( mGridPosition+xOffset, mGridPosition + vecAxisZ+xOffset );
+	}
 
-		g.DrawLine( vecOrigin+xOffset, vecAxisY+xOffset );
-		g.DrawLine( vecOrigin+zOffset, vecAxisY+zOffset );
+	for( int i = 0; i <= numSquareY; i++ )
+	{
+		Vector3f yOffset( 0, i*mSquareSpacing.y, 0 );
 
-		g.DrawLine( vecOrigin+xOffset, vecAxisZ+xOffset );
-		g.DrawLine( vecOrigin+yOffset, vecAxisZ+yOffset );
+		g.DrawLine( mGridPosition+yOffset, mGridPosition + vecAxisX+yOffset );
+		g.DrawLine( mGridPosition+yOffset, mGridPosition + vecAxisZ+yOffset );
+	}
+
+	for( int i = 0; i <= numSquareZ; i++ )
+	{
+		Vector3f zOffset( 0, 0, i *mSquareSpacing.z);
+
+		g.DrawLine( mGridPosition+zOffset, mGridPosition + vecAxisX+zOffset );		
+		g.DrawLine( mGridPosition+zOffset, mGridPosition + vecAxisY+zOffset );
 	}
 
 	g.DrawLine( vecOrigin, vecAxisX, sf::Color::Red		);

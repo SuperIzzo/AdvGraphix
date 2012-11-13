@@ -26,10 +26,16 @@ public:
 
 public:
 	void				Draw( Graphics3D &g ) const;
-	Vector3f &			Offset();
+
+	Vector3f &			Position();
+	Vector3f &			Size();
+	Vector3f &			Spacing();
 
 private:
-	Vector3f			mOffset;
+	Vector3f			mGridPosition;
+
+	Vector3f			mGridSize;
+	Vector3f			mSquareSpacing;
 };
 
 
