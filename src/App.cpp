@@ -180,7 +180,7 @@ void App::Render()
 		theMesh.SetColor( sf::Color::Magenta );
 
 		meshLoaded = OBJMeshLoader::LoadMesh( theMesh, 
-			"M:\\Advance Computer Graphics\\Assignment 1\\AdvGraphix\\data\\books.obj"
+			"..\\..\\..\\data\\books.obj"
 			);
 
 		mCamera.Position() = Vector3f(200,200,200);
