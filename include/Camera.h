@@ -32,6 +32,8 @@ public:
 	Vector3f &				Target();
 	Vector3f &				UpVector();
 
+	float &					Zoom();
+
 	void					SetViewMatrix(Matrix4f *viewMat);
 	Matrix4f *				GetViewMatrix();
 
@@ -42,6 +44,8 @@ private:
 	Vector3f				mPosition;
 	Vector3f				mTarget;
 	Vector3f				mUp;
+
+	float					mZoom;
 };
 
 

@@ -12,7 +12,8 @@
 //	Camera::Camera
 //---------------------------------------
 Camera::Camera(Matrix4f * aViewMat) :
-	mViewMatrix(aViewMat)
+	mViewMatrix(aViewMat) ,
+	mZoom( 1 )
 {
 }
 
@@ -57,6 +58,18 @@ Vector3f& Camera::UpVector()
 
 
 //=================================================================
+//	Camera::Zoom : the camera zoom
+//---------------------------------------
+float& Camera::Zoom()
+{
+	return mZoom;
+}
+
+
+
+
+
+//=================================================================
 //	Camera::GetViewMatrix : the view camera associated matrix
 //---------------------------------------
 Matrix4f * Camera::GetViewMatrix()
@@ -88,5 +101,6 @@ void Camera::Update()
 	if( mViewMatrix )
 	{
 		TransformUtils::SetLookAt( *mViewMatrix, mPosition, mTarget, mUp );
+		TransformUtils::AddScale( *mViewMatrix, mZoom, mZoom, mZoom );
 	}
 }
