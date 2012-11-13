@@ -13,7 +13,15 @@
 //=================================================================
 //	Inlude
 //---------------------------------------
+#include <iostream>
 
+
+
+
+
+//=================================================================
+//	Forward Declarations
+//---------------------------------------
 class App;
 
 
@@ -30,7 +38,12 @@ public:
 	void					RunSetup();
 
 private:
+	void					DoLoadMesh();
+	void					DoSetupCamera();
+
+private:
 	App					  & mApp;
+	std::istream		  * mInStr;
 };
 
 

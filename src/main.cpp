@@ -16,10 +16,6 @@
 
 #include "App.h"
 
-#include "VLFLMeshLoader.h"
-#include "OBJMeshLoader.h"
-
-
 #include "ShiftTransform.h"
 #include "ScaleTransform.h"
 

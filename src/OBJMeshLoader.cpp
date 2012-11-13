@@ -120,6 +120,10 @@ bool OBJMeshLoader::LoadMesh(Mesh &mesh, const char * objFname)
 			//if
 		}
 	}
+	else
+	{
+		return false;
+	}
 
 	return true;
 }

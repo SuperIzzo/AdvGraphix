@@ -42,13 +42,9 @@ void Grid3D::Draw( Graphics3D &g ) const
 	Vector3f vecAxisY(	0, GRID_SIZE, 0 );
 	Vector3f vecAxisZ(	0, 0, GRID_SIZE );
 
-	g.DrawLine( vecOrigin, vecAxisX, sf::Color::Red		);
-	g.DrawLine( vecOrigin, vecAxisY, sf::Color::Green	);
-	g.DrawLine( vecOrigin, vecAxisZ, sf::Color::Blue	);
-
 	for( int i = 1; i <= NUM_SQUARES; i++ )
 	{
-		Vector3f xOffset( i*SQUARE_SIZE, 0, 0 );
+		Vector3f xOffset( (i-3)*SQUARE_SIZE, 0, 0 );
 		Vector3f yOffset( 0, i*SQUARE_SIZE, 0 );
 		Vector3f zOffset( 0, 0, i *SQUARE_SIZE);
 
@@ -61,6 +57,10 @@ void Grid3D::Draw( Graphics3D &g ) const
 		g.DrawLine( vecOrigin+xOffset, vecAxisZ+xOffset );
 		g.DrawLine( vecOrigin+yOffset, vecAxisZ+yOffset );
 	}
+
+	g.DrawLine( vecOrigin, vecAxisX, sf::Color::Red		);
+	g.DrawLine( vecOrigin, vecAxisY, sf::Color::Green	);
+	g.DrawLine( vecOrigin, vecAxisZ, sf::Color::Blue	);
 
 	g.DrawText( vecOrigin ,	"O" );
 	g.DrawText( vecAxisX  + Vector3f(+5, 0, 0),		"x", sf::Color::Red );

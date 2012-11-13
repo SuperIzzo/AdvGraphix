@@ -26,6 +26,10 @@ public:
 
 public:
 	void				Draw( Graphics3D &g ) const;
+	Vector3f &			Offset();
+
+private:
+	Vector3f			mOffset;
 };
 
 
