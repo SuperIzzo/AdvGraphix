@@ -22,6 +22,9 @@
     <Filter Include="docs\report">
       <UniqueIdentifier>{25a3818f-6e67-4b7b-a329-60539ecd1a9c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\Transform">
+      <UniqueIdentifier>{7f2ea7d8-229e-4fa0-b7bf-3c3e1d9baa34}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\main.cpp">
@@ -54,12 +57,12 @@
     <ClCompile Include="..\..\..\src\OBJMeshLoader.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\AppCmdPrompt.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\Matrix.h">
-      <Filter>include\Maths</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\TransformUtils.h">
       <Filter>include\Maths</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\Vector.h">
@@ -92,12 +95,24 @@
     <ClInclude Include="..\..\..\include\Vector.h">
       <Filter>include\Maths</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\TransformOperation.h">
+      <Filter>include\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\TransformUtils.h">
+      <Filter>include\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\ShiftTransform.h">
+      <Filter>include\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\ScaleTransform.h">
+      <Filter>include\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\AppCmdPrompt.h">
+      <Filter>include\3D App</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\include\Matrix.inl">
-      <Filter>include\Maths</Filter>
-    </None>
-    <None Include="..\..\..\include\TransformUtils.inl">
       <Filter>include\Maths</Filter>
     </None>
     <None Include="..\..\..\include\Vector.inl">
@@ -114,6 +129,9 @@
     </None>
     <None Include="..\..\..\docs\Resources.txt">
       <Filter>docs</Filter>
+    </None>
+    <None Include="..\..\..\include\TransformUtils.inl">
+      <Filter>include\Transform</Filter>
     </None>
   </ItemGroup>
 </Project>

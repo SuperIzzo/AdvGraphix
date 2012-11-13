@@ -18,6 +18,11 @@
 #include "Graphics3D.h"
 #include "Camera.h"
 
+#include "Mesh.h"
+#include "TransformOperation.h"
+#include "AppCmdPrompt.h"
+
+
 
 
 
@@ -30,8 +35,13 @@ public:
 							App();
 	void					Run();
 
+	void					SetMesh( const Mesh &theMesh );
+	void					SetTransformOp( TransformOperation *transformOp );
+
 private:
 	void					Initialize();
+	void					SetUpScene();
+	void					UserPrompt();
 	void					HandleEvents();
 	void					HandleKeyPressedEvent( sf::Event &theEvent );
 	void					HandleKeyReleasedEvent( sf::Event &theEvent );
@@ -43,6 +53,14 @@ private:
 	Graphics3D				mGraphics3D;
 	sf::RenderWindow		mRenderWindow;
 	bool					mKeyBuffer[sf::Keyboard::KeyCount];
+
+	TransformOperation	  * mTransformOperation;
+	Mesh					mMesh;
+	Mesh					mTransformedMesh;
+
+	AppCmdPrompt			mCmdPrompt;
+
+	friend class AppCmdPrompt;
 };
 
 

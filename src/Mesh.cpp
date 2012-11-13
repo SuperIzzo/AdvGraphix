@@ -45,7 +45,7 @@ void Mesh::SetColor( const sf::Color &color)
 //---------------------------------------
 void Mesh::Draw( Graphics3D &g ) const
 {
-	for( int i=0; i<mFacets.size(); i++ )
+	for( size_t i=0; i<mFacets.size(); i++ )
 	{
 		DrawFacet( g, mFacets[i] );
 	}
@@ -65,7 +65,7 @@ void Mesh::DrawFacet( Graphics3D &g, const Facet &theFacet ) const
 				mVertices[theFacet.indices[0]], 
 				mColor );
 
-	for( int i=1; i<theFacet.indices.size()-1; i++ )
+	for( size_t i=1; i<theFacet.indices.size()-1; i++ )
 	{
 		int ind1 = theFacet.indices[i];
 		int ind2 = theFacet.indices[i+1];

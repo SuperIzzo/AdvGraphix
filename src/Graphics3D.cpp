@@ -85,7 +85,7 @@ void Graphics3D::DrawLine( Vector3f p1,  Vector3f p2, sf::Color color )
 		Vector3f outputP2 = TransformPoint( p2 );
 
 		sf::VertexArray theLine;
-		theLine.setPrimitiveType( sf::PrimitiveType::Lines );
+		theLine.setPrimitiveType( sf::Lines );
 
 		theLine.resize(2);
 		theLine[0] = sf::Vertex( sf::Vector2f(outputP1.x, outputP1.y),	color );

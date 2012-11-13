@@ -101,7 +101,7 @@ bool OBJMeshLoader::LoadMesh(Mesh &mesh, const char * objFname)
 						<< " (v " << theFacet.indices.size() << "):\t" 
 						<< theFacet.indices[0]+1;
 
-					for( int i=1; i< theFacet.indices.size(); i++ )
+					for( size_t i=1; i< theFacet.indices.size(); i++ )
 					{
 						std::cout << ", " << theFacet.indices[i]+1;
 					}

@@ -37,16 +37,16 @@ public:
 							Vector(CoordType aX, CoordType aY, CoordType aZ, CoordType aW);
 							
 
-	CoordType				Dot(const Vector<D, T>	 &other);
-	CoordType				Length();
+	CoordType				Dot(const Vector<D, T>	 &other) const;
+	CoordType				Length() const;
 
-	Vector<D, T>			Unit();
-	Vector<3, T>			Cross(const Vector<3, T> &other);
+	Vector<D, T>			Unit() const;
+	Vector<3, T>			Cross(const Vector<3, T> &other) const;
 
-	Vector<D, T>			operator+(const Vector<D, T>	&other);
-	Vector<D, T>			operator-(const Vector<D, T>	&other);
-	Vector<D, T>			operator*(T scalar);
-	Vector<D, T>			operator/(T scalar);
+	Vector<D, T>			operator+(const Vector<D, T>	&other) const;
+	Vector<D, T>			operator-(const Vector<D, T>	&other) const;
+	Vector<D, T>			operator*(T scalar) const;
+	Vector<D, T>			operator/(T scalar) const;
 	CoordType&				operator[] (size_t index);
 };
 

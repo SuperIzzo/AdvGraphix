@@ -82,7 +82,7 @@ Vector<D, T>::Vector(T aX, T aY, T aZ, T aW)
 //---------------------------------------
 template< int D, typename T>
 
-T Vector<D, T>::Dot(const Vector<D, T> &other)
+T Vector<D, T>::Dot(const Vector<D, T> &other) const
 {
 	T theResult = 0;
 
@@ -103,7 +103,7 @@ T Vector<D, T>::Dot(const Vector<D, T> &other)
 //---------------------------------------
 template< int D, typename T>
 
-T Vector<D, T>::Length()
+T Vector<D, T>::Length() const
 {
 	T theResult = 0;
 
@@ -123,7 +123,7 @@ T Vector<D, T>::Length()
 //	Vector::Cross : Returns a normalized for of this vector
 //---------------------------------------
 template< int D, typename T>
-Vector<D, T>	Vector<D, T>::Unit()
+Vector<D, T>	Vector<D, T>::Unit() const
 {
 	return (*this)/Length();
 }
@@ -135,7 +135,7 @@ Vector<D, T>	Vector<D, T>::Unit()
 //	Vector::Cross : Returns the cross product of two 3D vectors
 //---------------------------------------
 template< int D, typename T>
-Vector<3, T>	Vector<D, T>::Cross(const Vector<3, T>	&other)
+Vector<3, T>	Vector<D, T>::Cross(const Vector<3, T>	&other) const
 {
 	Vector<3, T> theResult;
 
@@ -157,7 +157,7 @@ Vector<3, T>	Vector<D, T>::Cross(const Vector<3, T>	&other)
 //---------------------------------------
 template< int D, typename T>
 
-Vector<D, T>	Vector<D, T>::operator+(const Vector<D, T>	&other)
+Vector<D, T>	Vector<D, T>::operator+(const Vector<D, T>	&other) const
 {
 	Vector<D, T> theResult;
 
@@ -178,7 +178,7 @@ Vector<D, T>	Vector<D, T>::operator+(const Vector<D, T>	&other)
 //---------------------------------------
 template< int D, typename T>
 
-Vector<D, T>	Vector<D, T>::operator-(const Vector<D, T>	&other)
+Vector<D, T>	Vector<D, T>::operator-(const Vector<D, T>	&other) const
 {
 	Vector<D, T> theResult;
 
@@ -199,7 +199,7 @@ Vector<D, T>	Vector<D, T>::operator-(const Vector<D, T>	&other)
 //---------------------------------------
 template< int D, typename T>
 
-Vector<D, T>	Vector<D, T>::operator*(T scalar)
+Vector<D, T>	Vector<D, T>::operator*(T scalar) const
 {
 	Vector<D, T> theResult;
 
@@ -220,7 +220,7 @@ Vector<D, T>	Vector<D, T>::operator*(T scalar)
 //---------------------------------------
 template< int D, typename T>
 
-Vector<D, T>	Vector<D, T>::operator/(T scalar)
+Vector<D, T>	Vector<D, T>::operator/(T scalar) const
 {
 	Vector<D, T> theResult;
 

@@ -91,7 +91,7 @@ bool VLFLMeshLoader::LoadMesh(Mesh &mesh, const char * vertListFname, const char
 						<< " (v " << theFacet.indices.size() << "):\t" 
 						<< lastInd+1;
 
-					for( int i=1; i< theFacet.indices.size(); i++ )
+					for( size_t i=1; i< theFacet.indices.size(); i++ )
 					{
 						std::cout << ", " << theFacet.indices[i]+1;
 					}

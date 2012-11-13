@@ -10,21 +10,40 @@
 #include "TransformUtils.h"
 
 
-#include "VLFLMeshLoader.h";
-#include "OBJMeshLoader.h";
+
+//=================================================================
+//	App::App
+//---------------------------------------
+App::App() :
+	mTransformOperation( 0 ),
+	mCmdPrompt( *this )
+{
+	memset( mKeyBuffer, 0, sizeof(mKeyBuffer) );
+}
 
 
 
 
 
 //=================================================================
-//	App::App
+//	App::SetMesh : Set the mesh
 //---------------------------------------
-App::App()
+void App::SetMesh(const Mesh &theMesh)
 {
-	memset( mKeyBuffer, 0, sizeof(mKeyBuffer) );
+	mMesh = theMesh;
 }
 
+
+
+
+
+//=================================================================
+//	App::SetTransformOp : Set the transform operation
+//---------------------------------------
+void App::SetTransformOp( TransformOperation *transformOp )
+{
+	mTransformOperation = transformOp;
+}
 
 
 
@@ -53,13 +72,65 @@ void App::Run()
 //---------------------------------------
 void App::Initialize()
 {
+	UserPrompt();
+
+	// Create our window
 	mRenderWindow.create( sf::VideoMode(800, 600), "Graphix Window");
 
 	// Link our 3D renderer to the 2D window
 	mGraphics3D.SetRenderTarget( mRenderWindow );
 
-	//Link our camera to the view matrix
+	// Link our camera to the view matrix
 	mCamera.SetViewMatrix( &mGraphics3D.ViewTransform() );
+
+	// Setup our meshes
+	SetUpScene();
+
+
+	// Setup camera position
+	mCamera.Position() = Vector3f(200,200,200);
+	mCamera.UpVector() = Vector3f(0,1,0);
+}
+
+
+
+
+
+//=================================================================
+//	App::UserPrompt : Prompt the user for options
+//---------------------------------------
+void App::UserPrompt()
+{
+	mCmdPrompt.RunSetup();
+}
+
+
+
+
+
+//=================================================================
+//	App::SetUpScene : Setup our meshes
+//---------------------------------------
+void App::SetUpScene()
+{
+	mMesh.SetColor( sf::Color::Magenta );
+	mTransformedMesh.SetColor( sf::Color::Yellow );
+
+	if( mTransformOperation )
+	{
+		mTransformedMesh.mFacets = mMesh.mFacets;
+
+		mTransformedMesh.mVertices.clear();
+		mTransformedMesh.mVertices.reserve( mMesh.mVertices.size() );
+
+		std::vector<Vector3f>::iterator vert = mMesh.mVertices.begin();
+		for( ; vert != mMesh.mVertices.end(); ++vert )
+		{
+			mTransformedMesh.mVertices.push_back(
+				mTransformOperation->Transform( *vert )
+			);
+		}
+	}
 }
 
 
@@ -168,35 +239,11 @@ void App::Update()
 //---------------------------------------
 void App::Render()
 {
-	static Mesh theMesh;
-	static bool meshLoaded = false;
-
-	if( !meshLoaded )
-	{
-		//meshLoaded = VLFLMeshLoader::LoadMesh( theMesh, 
-		//	"M:\\Advance Computer Graphics\\Assignment 1\\AdvGraphix\\data\\house.vl", 
-		//	"M:\\Advance Computer Graphics\\Assignment 1\\AdvGraphix\\data\\house.fl");
-
-		theMesh.SetColor( sf::Color::Magenta );
-
-		meshLoaded = OBJMeshLoader::LoadMesh( theMesh, 
-			"..\\..\\..\\data\\books.obj"
-			);
-
-		mCamera.Position() = Vector3f(200,200,200);
-		mCamera.UpVector() = Vector3f(0,1,0);
-	}
-
 	mCamera.Update();
 	mRenderWindow.clear();
 
 	// Drawing code here
 
-	static float f = 0.00f;
-	f+=0.01f;
-
-	//mCamera.SetPosition( Vector3f(200+f*5,200,200) );
-	//mCamera.SetTarget( Vector3f(0, 0+f*5,0) );
 	mCamera.Update();
 
 
@@ -210,7 +257,8 @@ void App::Render()
 	Grid3D grid;
 	grid.Draw( mGraphics3D );
 
-	theMesh.Draw( mGraphics3D );
+	mMesh.Draw( mGraphics3D );
+	mTransformedMesh.Draw( mGraphics3D );
 
 	mRenderWindow.display();
 }

@@ -227,7 +227,7 @@ void TransformUtils::AddRotationZ(Matrix<4,4, T> &theMatrix, T rz)
 template< typename T >
 void TransformUtils::SetLookAt(Matrix<4,4, T> &theMatrix, Vector<3, T> eye, Vector<3, T> lookAt, Vector<3, T> up, bool leftHanded )
 {
-	Vector<3, T> zaxis = (lookAt - eye).Unit() * (leftHanded? 1:-1);
+	Vector<3, T> zaxis = (lookAt - eye).Unit() * (leftHanded? 1.0f : -1.0f);
 	Vector<3, T> xaxis  = up.Cross( zaxis ).Unit();
 	Vector<3, T> yaxis  = xaxis.Cross( zaxis ).Unit();
 

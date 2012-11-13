@@ -20,6 +20,8 @@
 #include "OBJMeshLoader.h"
 
 
+#include "ShiftTransform.h"
+#include "ScaleTransform.h"
 
 
 
@@ -40,16 +42,27 @@ int main(int argc, char* args[])
 	}
 	else
 	{		
-		/*Mesh theMesh;
-		OBJMeshLoader::LoadMesh( theMesh, 
-			"M:\\Advance Computer Graphics\\Assignment 1\\AdvGraphix\\data\\vase.obj"
-			);
+		/*
+		Mesh theMesh;
+		bool meshLoaded;
 
-		system( "pause" );
-		return 0;*/
+		theMesh.SetColor( sf::Color::Magenta );
+
+		meshLoaded = OBJMeshLoader::LoadMesh( theMesh, 
+			"..\\..\\..\\data\\books.obj"
+		);
 		
+		ShiftTransform theShift( Vector3f(100, 100, 100) );
+
+		Vector3f scaleDir = Vector3f(1, 1, 1).Unit();
+
+		ScaleTransform theScale( scaleDir, 3 );
+		*/
+
 		App theApp;
 
+		//theApp.SetMesh( theMesh );
+		//theApp.SetTransformOp( &theScale );
 		theApp.Run();
 	}
 }

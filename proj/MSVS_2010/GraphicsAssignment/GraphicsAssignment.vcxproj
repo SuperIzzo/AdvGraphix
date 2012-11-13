@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\src\AppCmdPrompt.cpp" />
     <ClCompile Include="..\..\..\src\Camera.cpp" />
     <ClCompile Include="..\..\..\src\Graphics3D.cpp" />
     <ClCompile Include="..\..\..\src\Grid3D.cpp" />
@@ -23,12 +24,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\App.h" />
+    <ClInclude Include="..\..\..\include\AppCmdPrompt.h" />
     <ClInclude Include="..\..\..\include\Camera.h" />
     <ClInclude Include="..\..\..\include\Graphics3D.h" />
     <ClInclude Include="..\..\..\include\Grid3D.h" />
     <ClInclude Include="..\..\..\include\Matrix.h" />
     <ClInclude Include="..\..\..\include\Mesh.h" />
     <ClInclude Include="..\..\..\include\OBJMeshLoader.h" />
+    <ClInclude Include="..\..\..\include\ScaleTransform.h" />
+    <ClInclude Include="..\..\..\include\ShiftTransform.h" />
+    <ClInclude Include="..\..\..\include\TransformOperation.h" />
     <ClInclude Include="..\..\..\include\TransformUtils.h" />
     <ClInclude Include="..\..\..\include\Vector.h" />
     <ClInclude Include="..\..\..\include\VectorData.h" />
