@@ -61,6 +61,9 @@ public:
 	static void				AddRotationZ(Matrix<4,4, T> &theMatrix, T rz);
 
 	template< typename T >
+	static void				AddScale(Matrix<4,4, T> &theMatrix, T sx, T sy, T sz);
+
+	template< typename T >
 	static void				SetLookAt( Matrix<4,4, T> &theMatrix, Vector<3, T> eye, Vector<3, T> look, Vector<3, T> up, bool leftHanded = true );
 
 private:

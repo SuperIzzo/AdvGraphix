@@ -222,6 +222,22 @@ void TransformUtils::AddRotationZ(Matrix<4,4, T> &theMatrix, T rz)
 
 
 //=================================================================
+//	TransformUtils::AddRotationZ() : adds rotation around the Z axis
+//---------------------------------------
+template< typename T >
+void TransformUtils::AddScale(Matrix<4,4, T> &theMatrix, T sx, T sy, T sz)
+{
+	Matrix<4, 4, T> tempMatrix;
+	SetScale( tempMatrix, sx, sy, sz );
+
+	theMatrix = theMatrix * tempMatrix;
+}
+
+
+
+
+
+//=================================================================
 //	TransformUtils::SetLookAt() : sets a camera view matrix
 //---------------------------------------
 template< typename T >
