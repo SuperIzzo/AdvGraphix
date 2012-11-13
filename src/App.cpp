@@ -6,7 +6,6 @@
 #include <SFML/Window/Event.hpp>
 #include <SFML/Graphics.hpp>
 
-#include "Grid3D.h"
 #include "TransformUtils.h"
 
 
@@ -15,7 +14,6 @@
 //	App::App
 //---------------------------------------
 App::App() :
-	mTransformOperation( 0 ),
 	mCmdPrompt( *this )
 {
 	memset( mKeyBuffer, 0, sizeof(mKeyBuffer) );
@@ -26,40 +24,18 @@ App::App() :
 
 
 //=================================================================
-//	App::SetMesh : Set the mesh
-//---------------------------------------
-void App::SetMesh(const Mesh &theMesh)
-{
-	mMesh = theMesh;
-}
-
-
-
-
-
-//=================================================================
-//	App::SetTransformOp : Set the transform operation
-//---------------------------------------
-void App::SetTransformOp( TransformOperation *transformOp )
-{
-	mTransformOperation = transformOp;
-}
-
-
-
-
-//=================================================================
 //	App::Run : Starts the application loop
 //---------------------------------------
 void App::Run()
 {
-	Initialize();
-
-	while( mRenderWindow.isOpen() )
+	if( Initialize() )
 	{
-		HandleEvents();
-		Update();
-		Render();
+		while( mRenderWindow.isOpen() )
+		{
+			HandleEvents();
+			Update();
+			Render();
+		}
 	}
 }
 
@@ -70,9 +46,15 @@ void App::Run()
 //=================================================================
 //	App::Initialize : Initialization phase here
 //---------------------------------------
-void App::Initialize()
+bool App::Initialize()
 {
-	UserPrompt();
+	// Setup camera position
+	mCamera.Position() = Vector3f(200,200,200);
+	mCamera.UpVector() = Vector3f(0,1,0);
+
+	// Show the command propmt to the user
+	if(! UserPrompt() )
+		return false;
 
 	// Create our window
 	mRenderWindow.create( sf::VideoMode(800, 600), "Graphix Window");
@@ -86,10 +68,7 @@ void App::Initialize()
 	// Setup our meshes
 	SetUpScene();
 
-
-	// Setup camera position
-	mCamera.Position() = Vector3f(200,200,200);
-	mCamera.UpVector() = Vector3f(0,1,0);
+	return true;
 }
 
 
@@ -99,9 +78,9 @@ void App::Initialize()
 //=================================================================
 //	App::UserPrompt : Prompt the user for options
 //---------------------------------------
-void App::UserPrompt()
+bool App::UserPrompt()
 {
-	mCmdPrompt.RunSetup();
+	return mCmdPrompt.RunSetup();
 }
 
 
@@ -116,19 +95,29 @@ void App::SetUpScene()
 	mMesh.SetColor( sf::Color::Magenta );
 	mTransformedMesh.SetColor( sf::Color::Yellow );
 
-	if( mTransformOperation )
+	mTransformedMesh.mFacets.clear();
+	mTransformedMesh.mVertices.clear();
+
+	if( !mTransformOperations.empty() )
 	{
 		mTransformedMesh.mFacets = mMesh.mFacets;
-
+		
 		mTransformedMesh.mVertices.clear();
 		mTransformedMesh.mVertices.reserve( mMesh.mVertices.size() );
 
 		std::vector<Vector3f>::iterator vert = mMesh.mVertices.begin();
 		for( ; vert != mMesh.mVertices.end(); ++vert )
 		{
-			mTransformedMesh.mVertices.push_back(
-				mTransformOperation->Transform( *vert )
-			);
+			Vector3f theVert = *vert;
+			std::vector<TransformOperation*>::iterator transOp;
+			for( transOp = mTransformOperations.begin(); 
+				 transOp != mTransformOperations.end();
+				 ++transOp )
+			{			
+				theVert = (*transOp)->Transform( theVert );
+			}
+				
+			mTransformedMesh.mVertices.push_back( theVert );
 		}
 	}
 }
@@ -200,6 +189,11 @@ void App::Update()
 	bool leftKey	= mKeyBuffer[ sf::Keyboard::Left ];
 	bool rightKey	= mKeyBuffer[ sf::Keyboard::Right ];
 
+	bool plusKey	= mKeyBuffer[ sf::Keyboard::Equal ];
+	bool minusKey	= mKeyBuffer[ sf::Keyboard::Dash ];
+
+	bool escKey		= mKeyBuffer[ sf::Keyboard::Escape ];
+
 	if( upKey || downKey || leftKey || rightKey )
 	{
 		float camSpeed = 3.0f;
@@ -228,6 +222,32 @@ void App::Update()
 			camPos = camPos - camRight * camSpeed;
 		}
 	}
+
+	if( plusKey || minusKey )
+	{
+		float camZoom = 1.01f;
+
+		if( plusKey )
+		{
+			mCamera.Zoom() *= camZoom;
+		}
+		else
+		{
+			mCamera.Zoom() /= camZoom;
+		}
+	}
+
+	if( escKey )
+	{
+		if( UserPrompt() )
+		{
+			SetUpScene();
+		}
+		else
+		{
+			mRenderWindow.close();
+		}
+	}
 }
 
 
@@ -253,9 +273,8 @@ void App::Render()
 		mRenderWindow.getSize().y/2.f, 
 		0.0f );
 
-
-	Grid3D grid;
-	grid.Draw( mGraphics3D );
+	
+	mGrid.Draw( mGraphics3D );
 
 	mMesh.Draw( mGraphics3D );
 	mTransformedMesh.Draw( mGraphics3D );

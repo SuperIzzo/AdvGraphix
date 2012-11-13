@@ -8,6 +8,9 @@
 #include "OBJMeshLoader.h"
 
 
+#include "ShiftTransform.h"
+#include "ScaleTransform.h"
+
 
 //=================================================================
 //	AppCmdPrompt::AppCmdPrompt
@@ -25,14 +28,14 @@ AppCmdPrompt::AppCmdPrompt(App &theApp)
 //=================================================================
 //	AppCmdPrompt::RunSetup
 //---------------------------------------
-void AppCmdPrompt::RunSetup()
+bool AppCmdPrompt::RunSetup()
 {
 	while( mInStr->good() )
 	{
 		std::cout << "Select Action:"
 			<< "\n 1) Load mesh"
-			<< "\n 2) Setup Camera"
-			<< "\n 3) Setup Grid"
+			<< "\n 2) Setup Grid"
+			<< "\n 3) Setup Camera"
 			<< "\n 4) Setup Transformations"
 			<< "\n 5) Load macro script"
 			<< "\n 6) Start!"
@@ -42,11 +45,12 @@ void AppCmdPrompt::RunSetup()
 
 		int option;
 		*mInStr >> option;
+		std::cout << std::endl;
 
 		switch( option )
 		{
 			case 0:
-				exit(0);	// Coud be done a little bit less hacky
+				return false;
 				break;
 
 			case 1:
@@ -54,14 +58,26 @@ void AppCmdPrompt::RunSetup()
 				break;
 
 			case 2:
+				DoSetupGrid();
+				break;
+
+			case 3:
 				DoSetupCamera();
 				break;
 
+			case 4:
+				DoSetupTransforms();
+				break;
+
 			case 6:
-				return;
+				std::cout << "\n\nStarting up! To bring the console back any time press ESC" << std::endl;
+				return true;
 				break;
 		}
 	}
+
+	std::cout << "Unexpected error, probably a macro script failure" << std::endl;
+	return true;
 }
 
 
@@ -82,6 +98,7 @@ void AppCmdPrompt::DoLoadMesh()
 		<< "> ";
 
 	*mInStr >> loadOption;
+	std::cout << std::endl;
 					
 	if( loadOption == 1 )
 	{					
@@ -128,29 +145,151 @@ void AppCmdPrompt::DoLoadMesh()
 
 
 //=================================================================
-//	AppCmdPrompt::DoSetupCamera
+//	AppCmdPrompt::DoSetupGrid : setup the grid
 //---------------------------------------
-void AppCmdPrompt::DoSetupCamera() 
+void AppCmdPrompt::DoSetupGrid()
 {
 	while( true )
 	{
+		// Print out some info about the grid
+		std::cout << "\n\n3D Grid"
+
+			"\n  * position - "
+			<< mApp.mGrid.Position().x << ", " 
+			<< mApp.mGrid.Position().y << ", " 
+			<< mApp.mGrid.Position().z << 
+
+			"\n  * size - " 
+			<< mApp.mGrid.Size().x << ", " 
+			<< mApp.mGrid.Size().y << ", " 
+			<< mApp.mGrid.Size().z <<
+
+			"\n  * spacing - " 
+			<< mApp.mGrid.Spacing().x << ", " 
+			<< mApp.mGrid.Spacing().y << ", " 
+			<< mApp.mGrid.Spacing().z << 
+			
+			"\n" <<std::endl;
+
+		// Ask the user what they want to do
+		int gridOption = 0;
+		std::cout << "Select action:" 
+			<< "\n 1) Set grid position"	
+			<< "\n 2) Set grid size"
+			<< "\n 3) Set grid spacing"
+			<< "\n 0) BACK"
+			<< std::endl
+			<< "> ";
+
+		*mInStr >> gridOption;
+		std::cout << std::endl;
+
+		switch( gridOption )
+		{
+			// Set grid position
+			case 1:
+				{
+					Vector3f thePos;
+					std::cout << "Enter position coordinates (in x,y,z order): ";
+
+					*mInStr >> thePos.x;
+					*mInStr >> thePos.y;
+					*mInStr >> thePos.z;
+
+					mApp.mGrid.Position() = thePos;
+				}
+				break;
+
+			// Set grid size
+			case 2:
+				{
+					Vector3f theSize;
+					std::cout << "Enter the size dimensions (in x,y,z order): ";
+
+					*mInStr >> theSize.x;
+					*mInStr >> theSize.y;
+					*mInStr >> theSize.z;
+
+					mApp.mGrid.Size() = theSize;
+				}
+				break;
+
+			// Set grid spacing
+			case 3:
+				{
+					Vector3f theSpacing;
+					std::cout << "Enter the spacing dimensions (in x,y,z order): ";
+
+					*mInStr >> theSpacing.x;
+					*mInStr >> theSpacing.y;
+					*mInStr >> theSpacing.z;
+
+					mApp.mGrid.Spacing() = theSpacing;
+				}
+				break;
+
+			// BACK
+			case 0:
+				return;
+				break;
+		}
+	}
+}
+
+
+
+
+
+//=================================================================
+//	AppCmdPrompt::DoSetupCamera
+//---------------------------------------
+void AppCmdPrompt::DoSetupCamera()
+{
+	while( true )
+	{
+		// Print out some info about the camera
+		std::cout << "\n\nCamera"
+
+			"\n  * position - "
+			<< mApp.mCamera.Position().x << ", " 
+			<< mApp.mCamera.Position().y << ", " 
+			<< mApp.mCamera.Position().z << 
+
+			"\n  * target - " 
+			<< mApp.mCamera.Target().x << ", " 
+			<< mApp.mCamera.Target().y << ", " 
+			<< mApp.mCamera.Target().z <<
+
+			"\n  * up - " 
+			<< mApp.mCamera.UpVector().x << ", " 
+			<< mApp.mCamera.UpVector().y << ", " 
+			<< mApp.mCamera.UpVector().z << 
+
+			"\n  * zoom - "
+			<< mApp.mCamera.Zoom() <<
+
+			"\n" << std::endl;
+
 		int cameraOption = 0;
 		std::cout << "Select action:" 
 			<< "\n 1) Set camera position"	
 			<< "\n 2) Set camera target"
 			<< "\n 3) Set camera up vector"
+			<< "\n 4) Set camdera zoom"
 			<< "\n 0) BACK"
 			<< std::endl
 			<< "> ";
 
 		*mInStr >> cameraOption;
+		std::cout << std::endl;
 
 		switch( cameraOption )
 		{
+			// Set camera position
 			case 1:
 				{
 					Vector3f thePos;
-					std::cout << "Enter position coordinates (in x,y,z order):";
+					std::cout << "Enter position coordinates (in x,y,z order): ";
 
 					*mInStr >> thePos.x;
 					*mInStr >> thePos.y;
@@ -160,10 +299,11 @@ void AppCmdPrompt::DoSetupCamera()
 				}
 				break;
 
+			// Set camera target
 			case 2:
 				{
 					Vector3f theTarget;
-					std::cout << "Enter target coordinates (in x,y,z order):";
+					std::cout << "Enter target coordinates (in x,y,z order): ";
 
 					*mInStr >> theTarget.x;
 					*mInStr >> theTarget.y;
@@ -173,10 +313,11 @@ void AppCmdPrompt::DoSetupCamera()
 				}
 				break;
 
+			// Set camera up vector
 			case 3:
 				{
 					Vector3f theUpVec;
-					std::cout << "Enter target coordinates (in x,y,z order):";
+					std::cout << "Enter up vector (in x,y,z order): ";
 
 					*mInStr >> theUpVec.x;
 					*mInStr >> theUpVec.y;
@@ -186,9 +327,179 @@ void AppCmdPrompt::DoSetupCamera()
 				}
 				break;
 
+			// Set camera zoom
+			case 4:
+				{
+					std::cout << "Enter zoom: ";
+
+					*mInStr >> mApp.mCamera.Zoom();
+				}
+				break;
+
+			// BACK
 			case 0:
-				return; //Go back!
+				return;
 				break;
 		}
 	}
+}
+
+
+
+
+
+//=================================================================
+//	AppCmdPrompt::DoSetupTransforms
+//---------------------------------------
+void AppCmdPrompt::DoSetupTransforms()
+{
+	while( true )
+	{
+		//mApp.mTransformOperations.push_back( new ShiftTransform( Vector3f(100,100,100) ) );
+
+		// Print out some info about the camera
+		std::cout << "\n\nTransformations - " << mApp.mTransformOperations.size() << std::endl;
+
+		for( size_t i = 0; i < mApp.mTransformOperations.size(); i++ )
+		{
+			std::cout << "  [" << i << "] ";
+			mApp.mTransformOperations[i]->Display( std::cout );
+			std::cout << std::endl;
+		}
+
+
+		// Ask the user what they want to do
+		int gridOption = 0;
+		std::cout << "Select action:" 
+			<< "\n 1) Add vector transform"	
+			<< "\n 2) Add matrix transform"	 // When adding a matrix next to another matrix the two matrices are merged
+			<< "\n 3) Remove transform"
+			<< "\n 0) BACK"
+			<< std::endl
+			<< "> ";
+
+		*mInStr >> gridOption;
+		std::cout << std::endl;
+
+		switch( gridOption )
+		{
+			// Add vector
+			case 1:
+				DoAddVectorTransform();
+				break;
+
+			// Remove transform
+			case 3:
+				{
+					if( !mApp.mTransformOperations.empty() )
+					{
+						std::cout << "Enter transform ID: ";
+						size_t id = GetID( mApp.mTransformOperations.size()-1 );
+					
+						delete mApp.mTransformOperations[id];
+						mApp.mTransformOperations.erase( mApp.mTransformOperations.begin() + id );
+					}
+				}
+				break;
+
+			// BACK
+			case 0:
+				return;
+				break;
+		}
+	}
+}
+
+
+
+
+
+//=================================================================
+//	AppCmdPrompt::DoAddVectorTransform
+//---------------------------------------
+void AppCmdPrompt::DoAddVectorTransform()
+{
+	TransformOperation * theOp = NULL;
+
+	std::cout << "Insert before ID: ";
+	size_t id = GetID( mApp.mTransformOperations.size() );
+
+	int transfType;
+	std::cout << "Select transform type:" 
+				<< "\n 1) Shift"	
+				<< "\n 2) Scale"
+				<< std::endl
+				<< "> ";
+
+	*mInStr >> transfType;
+	std::cout << std::endl;
+	
+	switch( transfType )
+	{
+		// Shift transform
+		case 1:
+			{
+				Vector3f theShift;
+
+				std::cout << "Enter shift vector (in x,y,z order): ";
+
+				*mInStr >> theShift.x;
+				*mInStr >> theShift.y;
+				*mInStr >> theShift.z;
+				
+				theOp = new ShiftTransform( theShift );
+			}
+			break;
+
+		// Scale transform
+		case 2:
+			{
+				Vector3f	theDir;
+				float		alpha;
+
+				std::cout << "Enter direction vector (in x,y,z order): ";
+
+				*mInStr >> theDir.x;
+				*mInStr >> theDir.y;
+				*mInStr >> theDir.z;
+
+				std::cout << "Enter alpha: ";
+
+				*mInStr >> alpha;
+				
+				theOp = new ScaleTransform( theDir.Unit(), alpha );
+			}
+			break;
+	}
+
+	mApp.mTransformOperations.insert( mApp.mTransformOperations.begin() + id, theOp );
+}
+
+
+
+
+
+//=================================================================
+//	AppCmdPrompt::DoAddVectorTransform
+//---------------------------------------
+size_t AppCmdPrompt::GetID(size_t max)
+{
+	size_t id = 0;
+	
+	while( true )
+	{							
+		*mInStr >> id;
+
+		if( id>=0 && id <= max )
+		{
+			break;
+		}
+		else
+		{
+			std::cout << "Wrong ID. Enter a number between 0 and " 
+					  << max << std::endl;
+		}
+	}
+
+	return id;
 }

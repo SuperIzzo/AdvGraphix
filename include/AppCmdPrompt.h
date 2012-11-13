@@ -35,11 +35,16 @@ class AppCmdPrompt
 {
 public:
 							AppCmdPrompt(App &theApp);
-	void					RunSetup();
+	bool					RunSetup();
 
 private:
 	void					DoLoadMesh();
 	void					DoSetupCamera();
+	void					DoSetupGrid();
+	void					DoSetupTransforms();
+	void					DoAddVectorTransform();
+
+	size_t					GetID(size_t max);
 
 private:
 	App					  & mApp;

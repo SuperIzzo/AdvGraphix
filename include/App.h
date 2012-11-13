@@ -17,6 +17,7 @@
 #include <SFML/Window/Keyboard.hpp>
 #include "Graphics3D.h"
 #include "Camera.h"
+#include "Grid3D.h"
 
 #include "Mesh.h"
 #include "TransformOperation.h"
@@ -35,13 +36,10 @@ public:
 							App();
 	void					Run();
 
-	void					SetMesh( const Mesh &theMesh );
-	void					SetTransformOp( TransformOperation *transformOp );
-
 private:
-	void					Initialize();
+	bool					Initialize();
 	void					SetUpScene();
-	void					UserPrompt();
+	bool					UserPrompt();
 	void					HandleEvents();
 	void					HandleKeyPressedEvent( sf::Event &theEvent );
 	void					HandleKeyReleasedEvent( sf::Event &theEvent );
@@ -50,11 +48,13 @@ private:
 
 private:
 	Camera					mCamera;
+	Grid3D					mGrid;
 	Graphics3D				mGraphics3D;
 	sf::RenderWindow		mRenderWindow;
 	bool					mKeyBuffer[sf::Keyboard::KeyCount];
 
-	TransformOperation	  * mTransformOperation;
+	std::vector<TransformOperation*>
+							mTransformOperations;
 	Mesh					mMesh;
 	Mesh					mTransformedMesh;
 
