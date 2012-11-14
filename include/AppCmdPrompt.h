@@ -43,6 +43,7 @@ private:
 	void					DoSetupGrid();
 	void					DoSetupTransforms();
 	void					DoAddVectorTransform();
+	void					DoLoadMacroScript();
 
 	size_t					GetID(size_t max);
 

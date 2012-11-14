@@ -4,9 +4,9 @@
 #include "AppCmdPrompt.h"
 #include "App.h"
 
+#include <fstream>
 #include "VLFLMeshLoader.h"
 #include "OBJMeshLoader.h"
-
 
 #include "ShiftTransform.h"
 #include "ScaleTransform.h"
@@ -30,8 +30,15 @@ AppCmdPrompt::AppCmdPrompt(App &theApp)
 //---------------------------------------
 bool AppCmdPrompt::RunSetup()
 {
-	while( mInStr->good() )
+	while( true )
 	{
+		// Terminate a macro if it is over
+		if( !mInStr->good() )
+		{
+			if( mInStr != &std::cin )
+				mInStr = &std::cin; 
+		}
+
 		std::cout << "Select Action:"
 			<< "\n 1) Load mesh"
 			<< "\n 2) Setup Grid"
@@ -67,6 +74,10 @@ bool AppCmdPrompt::RunSetup()
 
 			case 4:
 				DoSetupTransforms();
+				break;
+
+			case 5:
+				DoLoadMacroScript();
 				break;
 
 			case 6:
@@ -502,4 +513,34 @@ size_t AppCmdPrompt::GetID(size_t max)
 	}
 
 	return id;
+}
+
+
+
+
+
+//=================================================================
+//	AppCmdPrompt::DoLoadMacroScript
+//---------------------------------------
+void AppCmdPrompt::DoLoadMacroScript()
+{
+	char macroFName[255];
+
+	std::cout << "Enter the macro file path:"
+		<< std::endl
+		<< "> ";							
+	*mInStr >> macroFName;
+
+	if( strcmp(macroFName, "IO") == 0 )
+	{
+		if( mInStr != &std::cin)
+		{
+			delete mInStr;
+			mInStr = &std::cin;
+		}
+	}
+	else
+	{
+		mInStr = new std::ifstream(macroFName);
+	}
 }
