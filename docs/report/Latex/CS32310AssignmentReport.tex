@@ -1,6 +1,7 @@
 \documentclass[]{report}   % list options between brackets
 \usepackage{amsmath}
 \usepackage{amsfonts}
+\usepackage{mdframed}
 \usepackage{graphicx}
 %\usepackage{}              % list packages between braces
 
@@ -100,9 +101,11 @@ Transformations are operations which can be carried out on geometric data.
 \section{Shift}
 
 Shift (or translation) is one of the most basic linear transformations. Let \(\mathbf{p}\) be a point is space and \(\mathbf{t}\) be a vector describing the offset from that point. The new point \(\mathbf{p\prime}\) is then defined as:
+\begin{mdframed}
 \[
 	\mathbf{p\prime} = \mathbf{p} + \mathbf{t}
 \]
+\end{mdframed}
 
 Note that a point has a position and no direction, while a vector has a direction and no position. Because of that operations between points and vectors (such as addition) are not defined, however a point \(\mathbf{p}\) can be expressed as a displacement \(\mathbf{t_p}\) from the origin of the coordinate system \(\mathbf{O}\). This property of points is often assumed and the displacement vector \(\mathbf{t_p}\) is what is implied instead. The same convention is used in this paper.
 
@@ -168,10 +171,12 @@ If we wanted to scale is a specific direction, let it be defined as the unit vec
 \end{figure}
 
 The resulting formula is this:
+\begin{mdframed}
 \[
 	\mathbf{p\prime} = 
 	\mathbf{p} + (\alpha - 1) \mathbf{\hat{s}}(\mathbf{\hat{s}}\cdot \mathbf{p})
 \]
+\end{mdframed}
 
 Let's consider the special case when \(\mathbf{p}\perp\mathbf{\hat{s}}\). In that case \(\mathbf{\hat{s}}\cdot \mathbf{p} = 0\), so we get the following equation:
 \[
@@ -283,15 +288,22 @@ Reflection is a linear operation, where a point \(\mathbf{p}\) is translated twi
 \end{figure}
 
 The formula then becomes obvious:
+\begin{mdframed}
 \[
 	\mathbf{p\prime} = 
 	\mathbf{p} - 2\mathbf{\hat{n}}(\mathbf{\hat{n}} \cdot \mathbf{p})
 \]
+\end{mdframed}
 
 If \(\mathbf{p}\) lies on the plane then \(\mathbf{\hat{n}} \cdot \mathbf{p} = 0\), so we get that \(\mathbf{p\prime} = \mathbf{p}\), which shouldn't be surprising. 
 
 Another thing we might want to consider is when \(\mathbf{p}\) is behind the plane. In that case \(\mathbf{\hat{n}} \cdot \mathbf{p} < 0\) which means we'll be going in the direction of the plane normal (rather than it's opposite), so \(\mathbf{p\prime}\) will be in front of the plane. This also means that if we applied the same reflection transformation to a point twice (or any even number of times) we would get the same point.
 
+An important thing to note is that we cannot define any plane simply by its normal direction, planes also have an offset from the origin as it could be expressed by the following plane equation:
+\[
+	A p_x + B p_y + C p_z + D = \mathbf{\hat{n}} \cdot \mathbf{p} + D = 0
+\]
+The above reflection equation assumes that \(D=0\). All we have to do to adapt it the formula to any plane is to translate the point \(\mathbf{p}\) by \(-D\mathbf{\hat{n}}\) (and effectively move the origin of the coordinate system to the plane) and then, after we reflect it, translate the resulting point \(\mathbf{p\prime}\) back by \(D\mathbf{\hat{n}}\).
 
 \subsection{Deriving a matrix}
 Deriving a 3D matrix is again quite easy. We first decompose the equation:
@@ -301,7 +313,7 @@ Deriving a 3D matrix is again quite easy. We first decompose the equation:
 	p\prime_z = p_z - 2n_z(n_x p_x + n_y p_y + n_z p_z)		\\
 \end{align*}
 
-Then rearrange so that we only have one occurance of \(p_x, p_y, p_z, p\prime_x, p\prime_y\) and \(p\prime_z\)and we arrive at:
+Then rearrange so that we only have one occurrence of \(p_x, p_y, p_z, p\prime_x, p\prime_y\) and \(p\prime_z\)and we arrive at:
 
 \begin{align*}
 	p\prime_x &= (1 - 2n_x^2)p_x -2n_x n_y p_y -2n_x n_z p_z	\\
@@ -334,28 +346,181 @@ Which maps perfectly into a 3x3 matrix:
 \]
 
 
+
 %------ 2.5. Parallel Proj. ------
 \section{Parallel Projection}
-Parrallel projection is a linear transformation which maps a point in a 3D scene onto a projection plane, where the distance of an object from the projection plane does not affect its appearance.
+Parallel projection is a linear transformation which maps a point in a 3D scene onto a projection plane, where the distance of an object from the projection plane does not affect its appearance.
 
-We could achieve the effect of parallel projection similarly to the reflection transformation discussed earlier.
-The only difference would be instead of going twice the distance in the direction opposite to the surface normal,
+We could achieve the effect of parallel projection similarly to the reflection transformation discussed earlier. The only difference would be instead of going twice the distance in the direction opposite to the surface normal,
 we go once. In other words using this formula:
 \[
 	\mathbf{p\prime} = 
 	\mathbf{p} - \mathbf{\hat{n}}(\mathbf{\hat{n}} \cdot \mathbf{p})
 \]
 
-This would effectively translate \(\mathbf{p}\) onto the surface defined by the normal \(\mathbf{\hat{n}}\), but lets consider a slightly more complex situation. The above equation would transfer the point \(\mathbf{p}\) directly onto the surface in the directon of the normal \(\mathbf{\hat{n}}\) and is a special case of parallel projection called orthographic projection, however that might not be sufficient, if we wanted to view.... <MESS, correct!>
+This would effectively translate \(\mathbf{p}\) onto the surface defined by the normal \(\mathbf{\hat{n}}\), but that is a special case of parallel projection called orthographic projection, because the projection ray is perpendicular to the surface (and coincides with the surface normal). In the general case however this will not necessarily be true, take a look at \ref{fig:parproj}.
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.9\textwidth]{projection-diagram}
+\caption{parallel projection}
+\label{fig:parproj}
+\end{figure}
+In this case \(\mathbf{c}\) the viewing direction is not parallel to the plane normal \(\mathbf{\hat{n}}\).
 
-%Parallel projection
-%p' = p -  (n.p)/(n.c) * c
+Because we know that \(\mathbf{p\prime}\) lies in the plane, so it must satisfy the plane equation:
+\[
+	\mathbf{p\prime} \cdot \mathbf{\hat{n}} + D = 0
+\]
+As with the reflection transform we will assume that the plane passes through the origin of the coordinate system (and will correct that later), which means we assume that \(D=0\).
 
+We also know that the projected point \(\mathbf{p\prime}\) will lie on a line which goes trough the original point \(\mathbf{p}\) and has direction \(\mathbf{c}\), so it can be expressed as the result of the line equation:
+\[
+	\mathbf{p\prime} = \mathbf{p} + t\mathbf{c}
+\]
+Where \(t\) is a specific value we want to find. Replacing \(\mathbf{p\prime}\) back into the plane equation gives us:
+\[
+	(\mathbf{p} + t\mathbf{c}) \cdot \mathbf{\hat{n}} = 
+	(\mathbf{p} \cdot \mathbf{\hat{n}}) + t(\mathbf{c} \cdot \mathbf{\hat{n}}) = 0
+\]
+And then we solve for \(t\):
+\[
+	t = -\frac{\mathbf{p} \cdot \mathbf{\hat{n}}}{\mathbf{c} \cdot \mathbf{\hat{n}}}
+\]
+
+Replacing \(t\) into the line equation gives us the parallel projection equation:
+\begin{mdframed}
+\[
+	\mathbf{p\prime} = \mathbf{p} - \frac{\mathbf{p} \cdot \mathbf{\hat{n}}}{\mathbf{c} \cdot \mathbf{\hat{n}}} 
+	\mathbf{c}
+\]
+\end{mdframed}
+
+
+Now, lets consider orthographic projection again. When \(\mathbf{\hat{n}} \parallel \mathbf{c}\) it is also true that \(\mathbf{\hat{c}} = \frac{\mathbf{c}}{\mathbf{c} \cdot \mathbf{\hat{n}}} = \mathbf{\hat{n}}\). If we now specialized the equation we would get exactly our orthographic projection equation from before.
+
+
+\subsection{Deriving matrix}
+
+Following the standard procedure we decompose the equation into a system of three equation:
+
+%p'x = px - (px*nx + py*ny + pz*nz)*cx/(cx*nx + cy*ny + cz*nz)
+\begin{align*}
+	p\prime_x = p_x - \frac	{p_x n_x + p_y n_y + p_z n_z}
+							{\mathbf{\hat{n}}\cdot\mathbf{c}} cx	\\
+	p\prime_y = p_y - \frac	{p_x n_x + p_y n_y + p_z n_z}
+							{\mathbf{\hat{n}}\cdot\mathbf{c}} cy	\\
+	p\prime_z = p_z - \frac	{p_x n_x + p_y n_y + p_z n_z}
+							{\mathbf{\hat{n}}\cdot\mathbf{c}} cz	\\
+\end{align*}
+
+Then we rearrange and end up with three equations which look something like this:
+\begin{align*}
+	p\prime_x &=(1 - \frac{n_x c_x}{\mathbf{\hat{n}}\cdot\mathbf{c}}) p_x 
+				   - \frac{n_y c_x}{\mathbf{\hat{n}}\cdot\mathbf{c}}  p_y
+				   - \frac{n_z c_x}{\mathbf{\hat{n}}\cdot\mathbf{c}}  p_z
+				\\
+	p\prime_y &= - \frac{n_x c_y}{\mathbf{\hat{n}}\cdot\mathbf{c}}	p_x
+			+(1 - \frac{n_y c_y}{\mathbf{\hat{n}}\cdot\mathbf{c}})	p_y
+				 - \frac{n_z c_y}{\mathbf{\hat{n}}\cdot\mathbf{c}}	p_z
+				\\
+	p\prime_z &= - \frac{n_x c_z}{\mathbf{\hat{n}}\cdot\mathbf{c}}	p_x
+				 - \frac{n_y c_z}{\mathbf{\hat{n}}\cdot\mathbf{c}}	p_y
+			+(1 - \frac{n_z c_z}{\mathbf{\hat{n}}\cdot\mathbf{c}})	p_z
+\end{align*}
+
+And finally we construct our matrix:
+\[
+	\begin{bmatrix}
+	p\prime_x \\
+	p\prime_y \\
+	p\prime_z \\
+	1
+	\end{bmatrix}
+	=	
+	\begin{bmatrix}
+			1 - \frac{n_x c_x}{\mathbf{\hat{n}}\cdot\mathbf{c}}	
+		&	- \frac{n_y c_x}{\mathbf{\hat{n}}\cdot\mathbf{c}}	
+		&	- \frac{n_z c_x}{\mathbf{\hat{n}}\cdot\mathbf{c}}
+		&	0
+		\\
+			- \frac{n_x c_y}{\mathbf{\hat{n}}\cdot\mathbf{c}}
+		&	1 - \frac{n_y c_y}{\mathbf{\hat{n}}\cdot\mathbf{c}}
+		&	- \frac{n_z c_y}{\mathbf{\hat{n}}\cdot\mathbf{c}}
+		&	0
+		\\
+			- \frac{n_x c_z}{\mathbf{\hat{n}}\cdot\mathbf{c}}
+		&	- \frac{n_y c_z}{\mathbf{\hat{n}}\cdot\mathbf{c}}
+		&	1 - \frac{n_z c_z}{\mathbf{\hat{n}}\cdot\mathbf{c}}
+		&	0
+		\\
+		0 & 0 & 0 & 1
+	\end{bmatrix}
+	\begin{bmatrix}
+		p_x \\
+		p_y \\
+		p_z \\
+		1
+	\end{bmatrix}
+\]
+
+Notice that we divide by \(\mathbf{\hat{n}}\cdot\mathbf{c}\) in every cell and that \(-\) sign, we could factor these divisions into the \(w\) parameter and have something which looks much nicer and requires less operations.
+
+\[
+	\begin{bmatrix}
+	p\prime_x \\
+	p\prime_y \\
+	p\prime_z \\
+	p\prime_w
+	\end{bmatrix}
+	=	
+	\begin{bmatrix}
+			n_x c_x - \mathbf{\hat{n}}\cdot\mathbf{c}	
+		&	n_y c_x
+		&	n_z c_x
+		&	0
+		\\
+			n_x c_y
+		&	n_y c_y - \mathbf{\hat{n}}\cdot\mathbf{c}
+		&	n_z c_y
+		&	0
+		\\
+			n_x c_z
+		&	n_y c_z
+		&	n_z c_z - \mathbf{\hat{n}}\cdot\mathbf{c}
+		&	0
+		\\
+		0 & 0 & 0 & -\mathbf{\hat{n}}\cdot\mathbf{c}
+	\end{bmatrix}
+	\begin{bmatrix}
+		p_x \\
+		p_y \\
+		p_z \\
+		1
+	\end{bmatrix}
+\]
+
+\pagebreak
 %----- 2.6. Perspective Proj. ----
 \section{Perspective Projection}
 
-Blah blah blah
+Perspective projection is a transformation in which 3D points are mapped onto a 2D surface (or plane). It has the property to affect the size of the projected objects (typically the further an object is the smaller its projection is). This projection is based on the pinhole camera model where all rays cross a projection plane and converge into a single point. Consider \ref{fig:persproj}: 
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.8\textwidth]{persp-projection-diagram}
+\caption{parallel projection}
+\label{fig:persproj}
+\end{figure}
 
+It looks different to parallel projection and \ref{fig:parproj}, but also bares a lot of resemblance. The most significant difference is than instead of a constant viewing direction \(\mathbf{c}\) we now have a viewing direction that is different for every point. If we chose a focal point \(\mathbf{v}\) we can compute that viewing direction as \(\mathbf{p}-\mathbf{v}\). Then we can replace \(\mathbf{c}\) with the new direction and we end up with:
+\begin{mdframed}
+\[
+	\mathbf{p\prime} = \mathbf{p} - \frac{\mathbf{p} \cdot \mathbf{\hat{n}}}{(\mathbf{p}-\mathbf{v}) \cdot \mathbf{\hat{n}}} 
+	(\mathbf{p}-\mathbf{v})
+\]
+\end{mdframed}
+
+
+\subsection{Deriving matrix}
 
 
 
