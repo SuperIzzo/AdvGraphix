@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.9.22)  13 NOV 2012 09:56
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.11.14)  14 NOV 2012 14:45
 entering extended mode
 **CS32310AssignmentReport.tex
 
-(D:\Development\Projects\CPP\AdvGraphix\docs\report\Latex\CS32310AssignmentRepo
-rt.tex
+("M:\Advance Computer Graphics\Assignment 1\AdvGraphix\docs\report\Latex\CS3231
+0AssignmentReport.tex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -120,18 +120,18 @@ Package graphics Info: Driver file: pdftex.def on input line 91.
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/message (HO)
 )
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
-Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+Package: ltxcmds 2011/04/18 v1.20 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count100
 ))
 \Gin@req@height=\dimen112
 \Gin@req@width=\dimen113
 )
-(D:\Development\Projects\CPP\AdvGraphix\docs\report\Latex\CS32310AssignmentRepo
-rt.aux)
+("M:\Advance Computer Graphics\Assignment 1\AdvGraphix\docs\report\Latex\CS3231
+0AssignmentReport.aux")
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
@@ -145,7 +145,7 @@ LaTeX Font Info:    ... okay on input line 9.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
 
-(C:\Users\Icko\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count101
 \scratchdimen=\dimen114
@@ -169,7 +169,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 19.
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 ) [1
 
-{C:/Users/Icko/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
 Overfull \hbox (0.86163pt too wide) in paragraph at lines 31--41
 \OT1/cmr/m/n/10 stract; use the ma-te-rial in this ref-er-ence as a guide. Ev-e
 ry manuscript
@@ -190,8 +190,8 @@ File: arbitrary-axis-scale-diagram.png Graphic file (type png)
 Package pdftex.def Info: arbitrary-axis-scale-diagram.png used on input line 16
 5.
 (pdftex.def)             Requested size: 310.4979pt x 103.49933pt.
- [3 <D:/Development/Projects/CPP/AdvGraphix/docs/report/Latex/arbitrary-axis-sc
-ale-diagram.png>]
+ [3 <M:/Advance Computer Graphics/Assignment 1/AdvGraphix/docs/report/Latex/arb
+itrary-axis-scale-diagram.png>]
 Overfull \hbox (5.1415pt too wide) in paragraph at lines 203--204
 []\OT1/cmr/m/n/10 We can re-ar-range each so that we have only one oc-cur-rence
  of $\OML/cmm/m/it/10 p[]; p[]; p[]; p\OMS/cmsy/m/n/10 0[]\OML/cmm/m/it/10 ; p\
@@ -204,11 +204,11 @@ File: reflection-diagram.png Graphic file (type png)
 <use reflection-diagram.png>
 Package pdftex.def Info: reflection-diagram.png used on input line 280.
 (pdftex.def)             Requested size: 310.4979pt x 179.63338pt.
- [5 <D:/Development/Projects/CPP/AdvGraphix/docs/report/Latex/reflection-diagra
-m.png>] [6]
+ [5 <M:/Advance Computer Graphics/Assignment 1/AdvGraphix/docs/report/Latex/ref
+lection-diagram.png>] [6]
 Chapter 3.
 
-Overfull \hbox (1.51912pt too wide) in paragraph at lines 339--343
+Overfull \hbox (1.51912pt too wide) in paragraph at lines 362--366
 []\OT1/cmr/m/n/10 Selective pre-sen-ta-tion of re-sults is im-por-tant. Re-dun-
 dancy should
  []
@@ -221,33 +221,34 @@ Chapter 4.
 
 ]
 
-LaTeX Warning: Empty `thebibliography' environment on input line 378.
+LaTeX Warning: Empty `thebibliography' environment on input line 401.
 
 [9
 
 ]
-(D:\Development\Projects\CPP\AdvGraphix\docs\report\Latex\CS32310AssignmentRepo
-rt.aux) ) 
+("M:\Advance Computer Graphics\Assignment 1\AdvGraphix\docs\report\Latex\CS3231
+0AssignmentReport.aux") ) 
 Here is how much of TeX's memory you used:
- 1848 strings out of 494045
- 23626 string characters out of 3148390
- 86996 words of memory out of 3000000
- 5144 multiletter control sequences out of 15000+200000
+ 1841 strings out of 494045
+ 23571 string characters out of 3148389
+ 86858 words of memory out of 3000000
+ 5137 multiletter control sequences out of 15000+200000
  13334 words of font info for 51 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
  27i,8n,22p,833b,225s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Program File
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb
-><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on CS32310AssignmentReport.pdf (11 pages, 150723 bytes).
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+bx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx7.pfb>
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+sy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm1
+0.pfb>
+Output written on CS32310AssignmentReport.pdf (11 pages, 151353 bytes).
 PDF statistics:
  88 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
