@@ -336,9 +336,20 @@ Which maps perfectly into a 3x3 matrix:
 
 %------ 2.5. Parallel Proj. ------
 \section{Parallel Projection}
+Parrallel projection is a linear transformation which maps a point in a 3D scene onto a projection plane, where the distance of an object from the projection plane does not affect its appearance.
 
-Blah blah blah
+We could achieve the effect of parallel projection similarly to the reflection transformation discussed earlier.
+The only difference would be instead of going twice the distance in the direction opposite to the surface normal,
+we go once. In other words using this formula:
+\[
+	\mathbf{p\prime} = 
+	\mathbf{p} - \mathbf{\hat{n}}(\mathbf{\hat{n}} \cdot \mathbf{p})
+\]
 
+This would effectively translate \(\mathbf{p}\) onto the surface defined by the normal \(\mathbf{\hat{n}}\), but lets consider a slightly more complex situation. The above equation would transfer the point \(\mathbf{p}\) directly onto the surface in the directon of the normal \(\mathbf{\hat{n}}\) and is a special case of parallel projection called orthographic projection, however that might not be sufficient, if we wanted to view.... <MESS, correct!>
+
+%Parallel projection
+%p' = p -  (n.p)/(n.c) * c
 
 %----- 2.6. Perspective Proj. ----
 \section{Perspective Projection}

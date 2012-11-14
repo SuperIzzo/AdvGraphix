@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.11.14)  14 NOV 2012 14:45
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.11.14)  14 NOV 2012 16:13
 entering extended mode
 **CS32310AssignmentReport.tex
 
@@ -208,7 +208,7 @@ Package pdftex.def Info: reflection-diagram.png used on input line 280.
 lection-diagram.png>] [6]
 Chapter 3.
 
-Overfull \hbox (1.51912pt too wide) in paragraph at lines 362--366
+Overfull \hbox (1.51912pt too wide) in paragraph at lines 373--377
 []\OT1/cmr/m/n/10 Selective pre-sen-ta-tion of re-sults is im-por-tant. Re-dun-
 dancy should
  []
@@ -221,7 +221,7 @@ Chapter 4.
 
 ]
 
-LaTeX Warning: Empty `thebibliography' environment on input line 401.
+LaTeX Warning: Empty `thebibliography' environment on input line 412.
 
 [9
 
@@ -248,7 +248,7 @@ blic/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
 onts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
 sy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm1
 0.pfb>
-Output written on CS32310AssignmentReport.pdf (11 pages, 151353 bytes).
+Output written on CS32310AssignmentReport.pdf (11 pages, 152735 bytes).
 PDF statistics:
  88 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
