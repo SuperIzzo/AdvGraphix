@@ -34,6 +34,8 @@ class App
 {
 public:
 							App();
+							~App();
+
 	void					Run();
 
 private:

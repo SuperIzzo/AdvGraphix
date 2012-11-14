@@ -29,8 +29,10 @@
     <ClInclude Include="..\..\..\include\Graphics3D.h" />
     <ClInclude Include="..\..\..\include\Grid3D.h" />
     <ClInclude Include="..\..\..\include\Matrix.h" />
+    <ClInclude Include="..\..\..\include\MatrixTransform.h" />
     <ClInclude Include="..\..\..\include\Mesh.h" />
     <ClInclude Include="..\..\..\include\OBJMeshLoader.h" />
+    <ClInclude Include="..\..\..\include\ReflectTransform.h" />
     <ClInclude Include="..\..\..\include\ScaleTransform.h" />
     <ClInclude Include="..\..\..\include\ShiftTransform.h" />
     <ClInclude Include="..\..\..\include\TransformOperation.h" />

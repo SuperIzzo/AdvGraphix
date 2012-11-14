@@ -110,6 +110,12 @@
     <ClInclude Include="..\..\..\include\AppCmdPrompt.h">
       <Filter>include\3D App</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\ReflectTransform.h">
+      <Filter>include\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\MatrixTransform.h">
+      <Filter>include\Transform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\include\Matrix.inl">

@@ -5,11 +5,16 @@
 #include "App.h"
 
 #include <fstream>
+#include <sstream>
+#include <SFML/System/Clock.hpp>
 #include "VLFLMeshLoader.h"
 #include "OBJMeshLoader.h"
 
 #include "ShiftTransform.h"
 #include "ScaleTransform.h"
+#include "ReflectTransform.h"
+
+#include "MatrixTransform.h"
 
 
 //=================================================================
@@ -385,6 +390,7 @@ void AppCmdPrompt::DoSetupTransforms()
 			<< "\n 1) Add vector transform"	
 			<< "\n 2) Add matrix transform"	 // When adding a matrix next to another matrix the two matrices are merged
 			<< "\n 3) Remove transform"
+			<< "\n 4) Profile transforms"
 			<< "\n 0) BACK"
 			<< std::endl
 			<< "> ";
@@ -396,7 +402,12 @@ void AppCmdPrompt::DoSetupTransforms()
 		{
 			// Add vector
 			case 1:
-				DoAddVectorTransform();
+				DoAddTransform(false);
+				break;
+
+			// Add vector
+			case 2:
+				DoAddTransform(true);
 				break;
 
 			// Remove transform
@@ -413,6 +424,10 @@ void AppCmdPrompt::DoSetupTransforms()
 				}
 				break;
 
+			case 4:
+				DoProfileTransforms();
+				break;
+
 			// BACK
 			case 0:
 				return;
@@ -426,9 +441,9 @@ void AppCmdPrompt::DoSetupTransforms()
 
 
 //=================================================================
-//	AppCmdPrompt::DoAddVectorTransform
+//	AppCmdPrompt::DoAddTransform
 //---------------------------------------
-void AppCmdPrompt::DoAddVectorTransform()
+void AppCmdPrompt::DoAddTransform(bool mat)
 {
 	TransformOperation * theOp = NULL;
 
@@ -439,6 +454,8 @@ void AppCmdPrompt::DoAddVectorTransform()
 	std::cout << "Select transform type:" 
 				<< "\n 1) Shift"	
 				<< "\n 2) Scale"
+				<< "\n 3) Rotation"
+				<< "\n 4) Reflection"
 				<< std::endl
 				<< "> ";
 
@@ -481,9 +498,86 @@ void AppCmdPrompt::DoAddVectorTransform()
 				theOp = new ScaleTransform( theDir.Unit(), alpha );
 			}
 			break;
+
+		// Rotate transform
+		case 3:
+			break;
+
+		// Reflect transform
+		case 4:
+			{
+				Vector3f	theNorm;
+				std::cout << "Enter the reflector surface normal (in x,y,z order): ";
+
+				*mInStr >> theNorm.x;
+				*mInStr >> theNorm.y;
+				*mInStr >> theNorm.z;
+
+				theOp = new ReflectTransform( theNorm.Unit() );
+			}
 	}
 
-	mApp.mTransformOperations.insert( mApp.mTransformOperations.begin() + id, theOp );
+	if( !mat )
+	{
+		// Add vector operation
+		mApp.mTransformOperations.insert( mApp.mTransformOperations.begin() + id, theOp );
+	}
+	else
+	{
+		// Add matrix operation
+		// This is a bit trickier because we won't necesssaryly be adding a new object
+		// Instead we'll check wether there is a matrix before or after and multiply the matrices
+		MatrixTransform * matOp = 0;
+		bool post = false;
+
+		if( id < mApp.mTransformOperations.size() )
+		{
+			TransformOperation * currentOp = mApp.mTransformOperations[id];
+
+			if( currentOp->GetType() == MatrixTransform::TRANSFORM_TYPE )
+			{
+				matOp = (MatrixTransform*) currentOp;
+				post = false;
+			}
+		}
+		
+		if( matOp == 0 && id>0 )
+		{
+			TransformOperation * currentOp = mApp.mTransformOperations[id-1];
+
+			if( currentOp->GetType() == MatrixTransform::TRANSFORM_TYPE )
+			{
+				matOp = (MatrixTransform*) currentOp;
+				post = true;
+			}
+		}
+
+		Matrix4f theMat = theOp->BuildMatrix();
+		std::ostringstream theCaption;
+
+		theOp->Display( theCaption );
+
+		if( matOp )
+		{
+			if( post )
+			{
+				matOp->matrix = matOp->matrix * theMat;
+				matOp->operations.push_back( theCaption.str() );
+			}
+			else
+			{
+				matOp->matrix = theMat * matOp->matrix;
+				matOp->operations.insert( matOp->operations.begin(), theCaption.str() );
+			}
+		}
+		else
+		{
+			MatrixTransform *theMatOp = new MatrixTransform( theMat, theCaption.str() );
+			mApp.mTransformOperations.insert( mApp.mTransformOperations.begin() + id, theMatOp );
+		}
+
+		delete theOp;
+	}
 }
 
 
@@ -491,7 +585,7 @@ void AppCmdPrompt::DoAddVectorTransform()
 
 
 //=================================================================
-//	AppCmdPrompt::DoAddVectorTransform
+//	AppCmdPrompt::GetID : an utility function get a correct number
 //---------------------------------------
 size_t AppCmdPrompt::GetID(size_t max)
 {
@@ -543,4 +637,37 @@ void AppCmdPrompt::DoLoadMacroScript()
 	{
 		mInStr = new std::ifstream(macroFName);
 	}
+}
+
+
+
+
+
+//=================================================================
+//	AppCmdPrompt::DoProfile
+//---------------------------------------
+void AppCmdPrompt::DoProfileTransforms()
+{
+	int numPoints;
+
+	std::cout << "Enter number of points to operate on:";
+	*mInStr >> numPoints;
+
+	std::vector<TransformOperation*>::iterator beginI = mApp.mTransformOperations.begin();
+	std::vector<TransformOperation*>::iterator endI = mApp.mTransformOperations.end();
+
+	sf::Clock proffiler;
+	proffiler.restart();
+	for( int i = 0; i< numPoints; i++)
+	{
+		Vector3f dummyPoint(  (rand() % 10000)/100,  (rand() % 10000)/100,	(rand() % 10000)/100 );
+
+		for( std::vector<TransformOperation*>::iterator i=beginI; i!= endI; ++i )
+		{
+			dummyPoint = (*i)->Transform( dummyPoint );
+		}
+	}
+	sf::Time delta = proffiler.getElapsedTime();
+
+	std::cout << "Operations completed in: " << delta.asMilliseconds() << " milliseconds" << std::endl;
 }

@@ -42,8 +42,9 @@ private:
 	void					DoSetupCamera();
 	void					DoSetupGrid();
 	void					DoSetupTransforms();
-	void					DoAddVectorTransform();
+	void					DoAddTransform(bool mat);
 	void					DoLoadMacroScript();
+	void					DoProfileTransforms();
 
 	size_t					GetID(size_t max);
 

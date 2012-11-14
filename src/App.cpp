@@ -24,6 +24,23 @@ App::App() :
 
 
 //=================================================================
+//	App::App
+//---------------------------------------
+App::~App()
+{
+	for( size_t i = 0; i < mTransformOperations.size(); i++ )
+	{
+		delete mTransformOperations[i];
+	}
+
+	mTransformOperations.clear();
+}
+
+
+
+
+
+//=================================================================
 //	App::Run : Starts the application loop
 //---------------------------------------
 void App::Run()
