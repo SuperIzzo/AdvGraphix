@@ -13,6 +13,7 @@
 #include "ShiftTransform.h"
 #include "ScaleTransform.h"
 #include "ReflectTransform.h"
+#include "ParallelProjTransform.h"
 
 #include "MatrixTransform.h"
 
@@ -456,6 +457,7 @@ void AppCmdPrompt::DoAddTransform(bool mat)
 				<< "\n 2) Scale"
 				<< "\n 3) Rotation"
 				<< "\n 4) Reflection"
+				<< "\n 5) Parallel Projection"
 				<< std::endl
 				<< "> ";
 
@@ -514,6 +516,26 @@ void AppCmdPrompt::DoAddTransform(bool mat)
 				*mInStr >> theNorm.z;
 
 				theOp = new ReflectTransform( theNorm.Unit() );
+			}
+
+		// Parallel projection transform
+		case 5:
+			{
+				Vector3f	theNorm;
+				Vector3f	theViewDir;
+				std::cout << "Enter the projection surface normal (in x,y,z order): ";
+
+				*mInStr >> theNorm.x;
+				*mInStr >> theNorm.y;
+				*mInStr >> theNorm.z;
+
+				std::cout << "Enter the view direction (in x,y,z order): ";
+
+				*mInStr >> theViewDir.x;
+				*mInStr >> theViewDir.y;
+				*mInStr >> theViewDir.z;
+
+				theOp = new ParallelProjTransform( theNorm.Unit(), theViewDir.Unit() );
 			}
 	}
 

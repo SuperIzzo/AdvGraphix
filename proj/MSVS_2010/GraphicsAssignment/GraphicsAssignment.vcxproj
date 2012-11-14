@@ -32,6 +32,7 @@
     <ClInclude Include="..\..\..\include\MatrixTransform.h" />
     <ClInclude Include="..\..\..\include\Mesh.h" />
     <ClInclude Include="..\..\..\include\OBJMeshLoader.h" />
+    <ClInclude Include="..\..\..\include\ParallelProjTransform.h" />
     <ClInclude Include="..\..\..\include\ReflectTransform.h" />
     <ClInclude Include="..\..\..\include\ScaleTransform.h" />
     <ClInclude Include="..\..\..\include\ShiftTransform.h" />
