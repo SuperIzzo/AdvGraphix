@@ -33,8 +33,10 @@
     <ClInclude Include="..\..\..\include\Mesh.h" />
     <ClInclude Include="..\..\..\include\OBJMeshLoader.h" />
     <ClInclude Include="..\..\..\include\ParallelProjTransform.h" />
+    <ClInclude Include="..\..\..\include\PerspectiveProjTransform.h" />
     <ClInclude Include="..\..\..\include\ReflectTransform.h" />
     <ClInclude Include="..\..\..\include\ScaleTransform.h" />
+    <ClInclude Include="..\..\..\include\ShearTransform.h" />
     <ClInclude Include="..\..\..\include\ShiftTransform.h" />
     <ClInclude Include="..\..\..\include\TransformOperation.h" />
     <ClInclude Include="..\..\..\include\TransformUtils.h" />

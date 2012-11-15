@@ -119,6 +119,12 @@
     <ClInclude Include="..\..\..\include\ParallelProjTransform.h">
       <Filter>include\Transform</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\PerspectiveProjTransform.h">
+      <Filter>include\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\ShearTransform.h">
+      <Filter>include\Transform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\include\Matrix.inl">
