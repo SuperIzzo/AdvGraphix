@@ -266,13 +266,8 @@ Now, let \(\mathbf{\hat{x}} =(1,0,0); \mathbf{\hat{y}} =(0,1,0); \mathbf{\hat{z}
 	\end{bmatrix}	
 \]
 Note that the order of the multiplication does not matter as \(\mathbf{\hat{x}}, \mathbf{\hat{y}}\) and \(\mathbf{\hat{z}}\) are mutually perpendicular.
- 
 
 
-%---------- 2.3. Rotate ----------
-\section{Rotate}
-
-Blah blah blah
 
 
 %---------- 2.4. Reflect ---------
@@ -464,7 +459,6 @@ And finally we construct our matrix:
 \]
 
 Notice that we divide by \(\mathbf{\hat{n}}\cdot\mathbf{c}\) in every cell and that \(-\) sign, we could factor these divisions into the \(w\) parameter and have something which looks much nicer and requires less operations.
-
 \[
 	\begin{bmatrix}
 	p\prime_x \\
@@ -499,7 +493,8 @@ Notice that we divide by \(\mathbf{\hat{n}}\cdot\mathbf{c}\) in every cell and t
 	\end{bmatrix}
 \]
 
-\pagebreak
+
+
 %----- 2.6. Perspective Proj. ----
 \section{Perspective Projection}
 
@@ -522,7 +517,144 @@ It looks different to parallel projection and \ref{fig:parproj}, but also bares 
 
 \subsection{Deriving matrix}
 
+Deriving a matrix is not so trivial this time, because the equation in not linear.
 
+
+%---------- 2.3. Rotate ----------
+\section{Rotate}
+
+
+In the 2D sense rotation can be expressed by the formula
+\[
+	\mathbf{p\prime} = 
+	\mathbf{\hat{x}}(\mathbf{\hat{x}} \cdot \mathbf{p})\cos\theta + \mathbf{\hat{y}}(\mathbf{\hat{y}} \cdot \mathbf{p})\sin\theta
+\]
+Where \(\mathbf{\hat{x}} \perp \mathbf{\hat{y}}\). 
+
+Suppose we wanted to rotate a point \(\mathbf{p}\) at angle \(\theta\) which lies on a plane defined by the normal \(\mathbf{\hat{n}}\) (and for convenience passes through the origin). We need two perpendicular vectors on that plane to do the rotation - one is \(\mathbf{p}\) the other one we could obtain by \(\mathbf{p} \times \mathbf{\hat{n}}\), because we know that the product will it will be perpendicular \(\mathbf{p}\) by definition and we know that it will lie in the plane (because it is also perpendicular to \(\mathbf{\hat{n}}\)). So we obtain the following formula:
+\begin{mdframed}
+\[
+	\mathbf{p\prime} = 
+	\mathbf{p}\cos\theta + \mathbf{n}\times\mathbf{p}\sin\theta
+\]
+\end{mdframed}
+
+What happens if \(\mathbf{p}\) does not lie on a plane passing though the origin? In that case we simply shift the coordinate system so that the origin lies on the plane (i.e. shift the original point \(\mathbf{p}\) in the opposite direction), and then after we do the operation we shift it back. A generic plane as already explained in previous sections is defined by a normal \(\mathbf{\hat{n}}\) and an offset value \(D\). To obtain \(D\) all we have to do is project \(\mathbf{p}\) onto \(\mathbf{\hat{n}}\).
+Now that we have found \(D\) the translation vector we need to shift \(\mathbf{p}\) by is \(-D\mathbf{\hat{n}}\) and the translation vector we need to shift the result of the rotation is \(D\mathbf{\hat{n}}\).
+We get two translations which look like this:
+\begin{align*}
+	\mathbf{p\prime} &=  \mathbf{p}-(\mathbf{p}\cdot\mathbf{\hat{n}})\mathbf{\hat{n}} \\
+	\mathbf{p\prime\prime} &= \mathbf{p\prime}\cos\theta+\mathbf{n}\times\mathbf{p\prime}\sin\theta	\\
+	\mathbf{p\prime\prime\prime} &= \mathbf{p\prime\prime}+(\mathbf{p}\cdot\mathbf{\hat{n}})\mathbf{\hat{n}}
+\end{align*}
+
+\subsection{Deriving a matrix}
+
+Decomposing the 2D formula gives us:
+\begin{align*}
+	p\prime_x = p_x\cos\theta + (n_y p_z - n_z p_y)\sin\theta
+	p\prime_y = p_y\cos\theta + (n_z p_x - n_x p_z)\sin\theta
+	p\prime_z = p_z\cos\theta + (n_x p_y - n_y p_x)\sin\theta
+\end{align*}
+
+Rearranging gives us:
+\begin{align*}
+	p\prime_x &= p_x\cos\theta - n_z p_y\sin\theta + n_y p_z\sin\theta
+	p\prime_y &= n_z p_x\sin\theta + p_y\cos\theta - n_x p_z\sin\theta
+	p\prime_z &= -n_y p_x\sin\theta + n_x p_y\sin\theta + p_z\cos\theta
+\end{align*}
+
+So our matrix looks like this:
+\[
+	\begin{bmatrix}
+	p\prime_x \\
+	p\prime_y \\
+	p\prime_z \\
+	1
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+	\cos\theta		&	- n_z\sin\theta		&		n_y\sin\theta	&	0	\\
+	n_z\sin\theta	&	\cos\theta			&		- n_x\sin\theta	&	0	\\
+	-n_y\sin\theta	&	n_x\sin\theta		&		\cos\theta		&	0	\\
+			0		&			0			&				0		&	1
+	\end{bmatrix}
+	\begin{bmatrix}
+	p_x \\
+	p_y \\
+	p_z \\
+	p_w
+	\end{bmatrix}	
+\]
+
+And to account for the offset we need to do a translation matrices for:
+\[
+\mathbf{p\prime} =  \mathbf{p}-(\mathbf{p}\cdot\mathbf{\hat{n}})\mathbf{\hat{n}}
+\]
+and
+\[
+\mathbf{p\prime} =  \mathbf{p}+(\mathbf{p}\cdot\mathbf{\hat{n}})\mathbf{\hat{n}}
+\]
+
+Decomposition of the first gives us:
+\begin{align*}
+	p\prime_x &= p_x - (n_x p_x + n_y p_y + n_z p_z)		\\
+	p\prime_y &= p_y - (n_x p_x + n_y p_y + n_z p_z)		\\
+	p\prime_z &= p_z - (n_x p_x + n_y p_y + n_z p_z)		\\
+\end{align*}
+
+Rearranging that gives us:
+\begin{align*}
+	p\prime_x &= (1 - n_x) p_x - n_y p_y - n_z p_z		\\
+	p\prime_y &= - n_x p_x + (1 -n_y) p_y + n_z p_z		\\
+	p\prime_z &= - n_x p_x - n_y p_y + (1 - n_z) p_z	\\
+\end{align*}
+
+So our matrix looks like this:
+\[
+	\begin{bmatrix}
+	p\prime_x \\
+	p\prime_y \\
+	p\prime_z \\
+	1
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+	1 - n_x			&	- n_y		&	- n_z		&	0	\\
+	- n_x			&	1 -n_y		&	- n_z		&	0	\\
+	- n_x			&	- n_y		&	1 - n_z		&	0	\\
+		0			&	0			&	0			&	1
+	\end{bmatrix}
+	\begin{bmatrix}
+	p_x \\
+	p_y \\
+	p_z \\
+	p_w
+	\end{bmatrix}	
+\]
+
+The second equation would produce a similar matrix, but instead of minus there would be a plus sign.
+\[
+	\begin{bmatrix}
+	p\prime_x \\
+	p\prime_y \\
+	p\prime_z \\
+	1
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+	1 + n_x		&	n_y		&	n_z		&	0	\\
+	n_x			&	1 +n_y	&	n_z		&	0	\\
+	n_x			&	n_y		&	1 + n_z	&	0	\\
+		0		&	0		&	0		&	1
+	\end{bmatrix}
+	\begin{bmatrix}
+	p_x \\
+	p_y \\
+	p_z \\
+	p_w
+	\end{bmatrix}	
+\]
 
 
 %%%%%%%%%%% 3. Results %%%%%%%%%%%

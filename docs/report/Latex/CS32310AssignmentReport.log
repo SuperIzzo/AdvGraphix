@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.9.22)  14 NOV 2012 23:23
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.9.22)  15 NOV 2012 11:18
 entering extended mode
 **CS32310AssignmentReport.tex
 
@@ -522,7 +522,7 @@ OMS/cmsy/m/n/10 0[]$
 File: reflection-diagram.png Graphic file (type png)
 
 <use reflection-diagram.png>
-Package pdftex.def Info: reflection-diagram.png used on input line 285.
+Package pdftex.def Info: reflection-diagram.png used on input line 280.
 (pdftex.def)             Requested size: 310.4979pt x 179.63338pt.
  [5 <D:/Development/Projects/CPP/AdvGraphix/docs/report/Latex/reflection-diagra
 m.png>]
@@ -530,36 +530,49 @@ m.png>]
 File: projection-diagram.png Graphic file (type png)
 
 <use projection-diagram.png>
-Package pdftex.def Info: projection-diagram.png used on input line 364.
+Package pdftex.def Info: projection-diagram.png used on input line 359.
 (pdftex.def)             Requested size: 310.4979pt x 191.93092pt.
  [6] [7 <D:/Development/Projects/CPP/AdvGraphix/docs/report/Latex/projection-di
-agram.png>] [8]
-<persp-projection-diagram.png, id=52, 299.61937pt x 185.19188pt>
+agram.png>]
+<persp-projection-diagram.png, id=48, 299.61937pt x 185.19188pt>
 File: persp-projection-diagram.png Graphic file (type png)
 
 <use persp-projection-diagram.png>
-Package pdftex.def Info: persp-projection-diagram.png used on input line 509.
+Package pdftex.def Info: persp-projection-diagram.png used on input line 504.
 (pdftex.def)             Requested size: 276.00105pt x 170.60747pt.
+Package mdframed Info: Not enough space on this page on input line 515.
+ [8]
+Package mdframed Info: Not enough space on this page on input line 515.
  [9 <D:/Development/Projects/CPP/AdvGraphix/docs/report/Latex/persp-projection-
 diagram.png>]
+Overfull \hbox (109.83289pt too wide) in paragraph at lines 558--558
+[] 
+ []
+
+
+Overfull \hbox (163.24942pt too wide) in paragraph at lines 565--565
+[] 
+ []
+
+[10] [11]
 Chapter 3.
 
-Overfull \hbox (1.51912pt too wide) in paragraph at lines 538--542
+Overfull \hbox (1.51912pt too wide) in paragraph at lines 670--674
 []\OT1/cmr/m/n/10 Selective pre-sen-ta-tion of re-sults is im-por-tant. Re-dun-
 dancy should
  []
 
-[10
+[12
 
 ]
 Chapter 4.
-[11
+[13
 
 ]
 
-LaTeX Warning: Empty `thebibliography' environment on input line 577.
+LaTeX Warning: Empty `thebibliography' environment on input line 709.
 
-[12
+[14
 
 ]
 (D:\Development\Projects\CPP\AdvGraphix\docs\report\Latex\CS32310AssignmentRepo
@@ -567,7 +580,7 @@ rt.aux) )
 Here is how much of TeX's memory you used:
  8451 strings out of 494045
  147441 string characters out of 3148390
- 211467 words of memory out of 3000000
+ 212467 words of memory out of 3000000
  11618 multiletter control sequences out of 15000+200000
  13334 words of font info for 51 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
@@ -585,9 +598,9 @@ b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Prog
 ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 
 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on CS32310AssignmentReport.pdf (14 pages, 184878 bytes).
+Output written on CS32310AssignmentReport.pdf (16 pages, 190377 bytes).
 PDF statistics:
- 111 PDF objects out of 1000 (max. 8388607)
+ 117 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
