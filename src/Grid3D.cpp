@@ -76,7 +76,7 @@ void Grid3D::Draw( Graphics3D &g ) const
 
 	Vector3f vecAxisX(	mGridSize.x, 0, 0 );
 	Vector3f vecAxisY(	0, mGridSize.y, 0 );
-	Vector3f vecAxisZ(	0, 0, mGridSize.y );
+	Vector3f vecAxisZ(	0, 0, mGridSize.z );
 
 	float numSquareX = mGridSize.x / mSquareSpacing.x;
 	float numSquareY = mGridSize.y / mSquareSpacing.y;

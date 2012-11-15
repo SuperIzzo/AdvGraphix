@@ -14,6 +14,8 @@
 #include "ScaleTransform.h"
 #include "ReflectTransform.h"
 #include "ParallelProjTransform.h"
+#include "PerspectiveProjTransform.h"
+#include "ShearTransform.h"
 
 #include "MatrixTransform.h"
 
@@ -458,6 +460,8 @@ void AppCmdPrompt::DoAddTransform(bool mat)
 				<< "\n 3) Rotation"
 				<< "\n 4) Reflection"
 				<< "\n 5) Parallel Projection"
+				<< "\n 6) Perspective Projection"
+				<< "\n 7) Shear"
 				<< std::endl
 				<< "> ";
 
@@ -517,6 +521,7 @@ void AppCmdPrompt::DoAddTransform(bool mat)
 
 				theOp = new ReflectTransform( theNorm.Unit() );
 			}
+			break;
 
 		// Parallel projection transform
 		case 5:
@@ -535,8 +540,51 @@ void AppCmdPrompt::DoAddTransform(bool mat)
 				*mInStr >> theViewDir.y;
 				*mInStr >> theViewDir.z;
 
-				theOp = new ParallelProjTransform( theNorm.Unit(), theViewDir.Unit() );
+				theOp = new ParallelProjTransform( theNorm.Unit(), theViewDir );
 			}
+			break;
+
+		// Perspective projection transform
+		case 6:
+			{
+				Vector3f	theNorm;
+				Vector3f	theFocalPoint;
+				std::cout << "Enter the projection surface normal (in x,y,z order): ";
+
+				*mInStr >> theNorm.x;
+				*mInStr >> theNorm.y;
+				*mInStr >> theNorm.z;
+
+				std::cout << "Enter the focal point (in x,y,z order): ";
+
+				*mInStr >> theFocalPoint.x;
+				*mInStr >> theFocalPoint.y;
+				*mInStr >> theFocalPoint.z;
+
+				theOp = new PerspectiveProjTransform( theNorm.Unit(), theFocalPoint );
+			}
+			break;
+
+		// Shear transform
+		case 7:
+			{
+				Vector3f	theNorm;
+				Vector3f	theShearDir;
+				std::cout << "Enter the ground surface normal (in x,y,z order): ";
+
+				*mInStr >> theNorm.x;
+				*mInStr >> theNorm.y;
+				*mInStr >> theNorm.z;
+
+				std::cout << "Enter the shear direction (in x,y,z order): ";
+
+				*mInStr >> theShearDir.x;
+				*mInStr >> theShearDir.y;
+				*mInStr >> theShearDir.z;
+
+				theOp = new ShearTransform( theNorm.Unit(), theShearDir );
+			}
+			break;
 	}
 
 	if( !mat )
