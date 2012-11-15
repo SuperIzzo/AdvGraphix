@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.9.22)  15 NOV 2012 11:18
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.9.22)  15 NOV 2012 12:45
 entering extended mode
 **CS32310AssignmentReport.tex
 
@@ -508,11 +508,11 @@ File: arbitrary-axis-scale-diagram.png Graphic file (type png)
 
 <use arbitrary-axis-scale-diagram.png>
 Package pdftex.def Info: arbitrary-axis-scale-diagram.png used on input line 16
-8.
+1.
 (pdftex.def)             Requested size: 310.4979pt x 103.49933pt.
  [3 <D:/Development/Projects/CPP/AdvGraphix/docs/report/Latex/arbitrary-axis-sc
 ale-diagram.png>]
-Overfull \hbox (5.1415pt too wide) in paragraph at lines 208--209
+Overfull \hbox (5.1415pt too wide) in paragraph at lines 201--202
 []\OT1/cmr/m/n/10 We can re-ar-range each so that we have only one oc-cur-rence
  of $\OML/cmm/m/it/10 p[]; p[]; p[]; p\OMS/cmsy/m/n/10 0[]\OML/cmm/m/it/10 ; p\
 OMS/cmsy/m/n/10 0[]$
@@ -522,7 +522,7 @@ OMS/cmsy/m/n/10 0[]$
 File: reflection-diagram.png Graphic file (type png)
 
 <use reflection-diagram.png>
-Package pdftex.def Info: reflection-diagram.png used on input line 280.
+Package pdftex.def Info: reflection-diagram.png used on input line 271.
 (pdftex.def)             Requested size: 310.4979pt x 179.63338pt.
  [5 <D:/Development/Projects/CPP/AdvGraphix/docs/report/Latex/reflection-diagra
 m.png>]
@@ -530,7 +530,7 @@ m.png>]
 File: projection-diagram.png Graphic file (type png)
 
 <use projection-diagram.png>
-Package pdftex.def Info: projection-diagram.png used on input line 359.
+Package pdftex.def Info: projection-diagram.png used on input line 350.
 (pdftex.def)             Requested size: 310.4979pt x 191.93092pt.
  [6] [7 <D:/Development/Projects/CPP/AdvGraphix/docs/report/Latex/projection-di
 agram.png>]
@@ -538,50 +538,48 @@ agram.png>]
 File: persp-projection-diagram.png Graphic file (type png)
 
 <use persp-projection-diagram.png>
-Package pdftex.def Info: persp-projection-diagram.png used on input line 504.
+Package pdftex.def Info: persp-projection-diagram.png used on input line 495.
 (pdftex.def)             Requested size: 276.00105pt x 170.60747pt.
-Package mdframed Info: Not enough space on this page on input line 515.
+Package mdframed Info: Not enough space on this page on input line 506.
  [8]
-Package mdframed Info: Not enough space on this page on input line 515.
+Package mdframed Info: Not enough space on this page on input line 506.
  [9 <D:/Development/Projects/CPP/AdvGraphix/docs/report/Latex/persp-projection-
-diagram.png>]
-Overfull \hbox (109.83289pt too wide) in paragraph at lines 558--558
-[] 
- []
+diagram.png>] [10]
+<shear-diagram.png, id=60, 344.78813pt x 263.48438pt>
+File: shear-diagram.png Graphic file (type png)
+ <use shear-diagram.png>
+Package pdftex.def Info: shear-diagram.png used on input line 651.
+(pdftex.def)             Requested size: 310.4979pt x 237.28249pt.
 
-
-Overfull \hbox (163.24942pt too wide) in paragraph at lines 565--565
-[] 
- []
-
-[10] [11]
+[11] [12 <D:/Development/Projects/CPP/AdvGraphix/docs/report/Latex/shear-diagra
+m.png>]
 Chapter 3.
 
-Overfull \hbox (1.51912pt too wide) in paragraph at lines 670--674
+Overfull \hbox (1.51912pt too wide) in paragraph at lines 717--721
 []\OT1/cmr/m/n/10 Selective pre-sen-ta-tion of re-sults is im-por-tant. Re-dun-
 dancy should
  []
 
-[12
-
-]
-Chapter 4.
 [13
 
 ]
-
-LaTeX Warning: Empty `thebibliography' environment on input line 709.
-
+Chapter 4.
 [14
+
+]
+
+LaTeX Warning: Empty `thebibliography' environment on input line 760.
+
+[15
 
 ]
 (D:\Development\Projects\CPP\AdvGraphix\docs\report\Latex\CS32310AssignmentRepo
 rt.aux) ) 
 Here is how much of TeX's memory you used:
- 8451 strings out of 494045
- 147441 string characters out of 3148390
- 212467 words of memory out of 3000000
- 11618 multiletter control sequences out of 15000+200000
+ 8457 strings out of 494045
+ 147556 string characters out of 3148390
+ 211478 words of memory out of 3000000
+ 11623 multiletter control sequences out of 15000+200000
  13334 words of font info for 51 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
  44i,11n,31p,847b,238s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -598,9 +596,9 @@ b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Prog
 ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 
 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on CS32310AssignmentReport.pdf (16 pages, 190377 bytes).
+Output written on CS32310AssignmentReport.pdf (17 pages, 198484 bytes).
 PDF statistics:
- 117 PDF objects out of 1000 (max. 8388607)
+ 121 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

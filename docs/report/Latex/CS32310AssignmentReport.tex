@@ -73,7 +73,7 @@ Blah blah blah
 %> SEG instruction to authors <%
 
 
-Blah blah blah
+In this paper I discuss 7 geometric transformations - shift, scale, reflect, parallel projection, perspective projection, rotation and shear. I explain their vector equations as and derive 3D homogeneous matrices. Later I compare the vector and the matrix implementations and provide screen-shots of working examples of each transformation. I touch on the subject of scene representation and solid objects.
 
 
 
@@ -82,19 +82,12 @@ Blah blah blah
 %%%%%%%%%%% 2. Methods %%%%%%%%%%%
 \chapter{Methods}           % chapter 2
 
-%> SEG instruction to authors <%
-\begin{quotation}
-	``The methodology employed in the work should be described in sufficient detail so that a competent geophysicist
-	could duplicate the results. More detailed items (e.g., heavy mathematics) often are best placed in appendices.
-	For complex mathematical articles, authors are strongly encouraged to include a table of symbols.''
-\end{quotation}
-%> SEG instruction to authors <%
 
-Transformations are operations which can be carried out on geometric data. 
+Transformations are operations which can be carried out on geometric data. Usually in the form:
 \[
 	\mathbf{p\prime} = f(\mathbf{p})
 \]
-
+Where \(\mathbf{p}\) is a point in space, \(f\) is a transformation function and \(\mathbf{p\prime}\) is a point which results from that function.
 
 
 %----------- 2.1. Shift ----------
@@ -268,8 +261,6 @@ Now, let \(\mathbf{\hat{x}} =(1,0,0); \mathbf{\hat{y}} =(0,1,0); \mathbf{\hat{z}
 Note that the order of the multiplication does not matter as \(\mathbf{\hat{x}}, \mathbf{\hat{y}}\) and \(\mathbf{\hat{z}}\) are mutually perpendicular.
 
 
-
-
 %---------- 2.4. Reflect ---------
 \section{Reflect}
 
@@ -394,7 +385,7 @@ Replacing \(t\) into the line equation gives us the parallel projection equation
 Now, lets consider orthographic projection again. When \(\mathbf{\hat{n}} \parallel \mathbf{c}\) it is also true that \(\mathbf{\hat{c}} = \frac{\mathbf{c}}{\mathbf{c} \cdot \mathbf{\hat{n}}} = \mathbf{\hat{n}}\). If we now specialized the equation we would get exactly our orthographic projection equation from before.
 
 
-\subsection{Deriving matrix}
+\subsection{Deriving a matrix}
 
 Following the standard procedure we decompose the equation into a system of three equation:
 
@@ -515,7 +506,7 @@ It looks different to parallel projection and \ref{fig:parproj}, but also bares 
 \end{mdframed}
 
 
-\subsection{Deriving matrix}
+\subsection{Deriving a matrix}
 
 Deriving a matrix is not so trivial this time, because the equation in not linear.
 
@@ -539,8 +530,18 @@ Suppose we wanted to rotate a point \(\mathbf{p}\) at angle \(\theta\) which lie
 \]
 \end{mdframed}
 
-What happens if \(\mathbf{p}\) does not lie on a plane passing though the origin? In that case we simply shift the coordinate system so that the origin lies on the plane (i.e. shift the original point \(\mathbf{p}\) in the opposite direction), and then after we do the operation we shift it back. A generic plane as already explained in previous sections is defined by a normal \(\mathbf{\hat{n}}\) and an offset value \(D\). To obtain \(D\) all we have to do is project \(\mathbf{p}\) onto \(\mathbf{\hat{n}}\).
-Now that we have found \(D\) the translation vector we need to shift \(\mathbf{p}\) by is \(-D\mathbf{\hat{n}}\) and the translation vector we need to shift the result of the rotation is \(D\mathbf{\hat{n}}\).
+What happens if \(\mathbf{p}\) does not lie on a plane passing though the origin? In that case we simply shift the coordinate system so that the origin lies on the plane (i.e. shift the original point \(\mathbf{p}\) in the opposite direction), and then after we do the operation we shift it back. A generic plane as already explained in previous sections is defined by a normal \(\mathbf{\hat{n}}\) and an offset value \(D\). 
+Now, we want \(D\) to be such a number that defines a the plane with a normal \(\mathbf{\hat{n}}\) and also contains the point \(\mathbf{p}\). In other words \(D\) satisfies the plane equation:
+\[
+	\mathbf{p} \cdot \mathbf{\hat{n}} + D = 0
+\]
+
+So we get:
+\[
+	D = - \mathbf{p} \cdot \mathbf{\hat{n}}
+\]
+
+Now that we have found \(D\) the translation vector we need to shift \(\mathbf{p}\) by is \(D\mathbf{\hat{n}}\) and the translation vector we need to shift the result of the rotation is \(-D\mathbf{\hat{n}}\).
 We get two translations which look like this:
 \begin{align*}
 	\mathbf{p\prime} &=  \mathbf{p}-(\mathbf{p}\cdot\mathbf{\hat{n}})\mathbf{\hat{n}} \\
@@ -548,19 +549,20 @@ We get two translations which look like this:
 	\mathbf{p\prime\prime\prime} &= \mathbf{p\prime\prime}+(\mathbf{p}\cdot\mathbf{\hat{n}})\mathbf{\hat{n}}
 \end{align*}
 
+
 \subsection{Deriving a matrix}
 
 Decomposing the 2D formula gives us:
 \begin{align*}
-	p\prime_x = p_x\cos\theta + (n_y p_z - n_z p_y)\sin\theta
-	p\prime_y = p_y\cos\theta + (n_z p_x - n_x p_z)\sin\theta
+	p\prime_x = p_x\cos\theta + (n_y p_z - n_z p_y)\sin\theta		\\
+	p\prime_y = p_y\cos\theta + (n_z p_x - n_x p_z)\sin\theta		\\
 	p\prime_z = p_z\cos\theta + (n_x p_y - n_y p_x)\sin\theta
 \end{align*}
 
 Rearranging gives us:
 \begin{align*}
-	p\prime_x &= p_x\cos\theta - n_z p_y\sin\theta + n_y p_z\sin\theta
-	p\prime_y &= n_z p_x\sin\theta + p_y\cos\theta - n_x p_z\sin\theta
+	p\prime_x &= p_x\cos\theta - n_z p_y\sin\theta + n_y p_z\sin\theta		\\
+	p\prime_y &= n_z p_x\sin\theta + p_y\cos\theta - n_x p_z\sin\theta		\\
 	p\prime_z &= -n_y p_x\sin\theta + n_x p_y\sin\theta + p_z\cos\theta
 \end{align*}
 
@@ -583,7 +585,7 @@ So our matrix looks like this:
 	p_x \\
 	p_y \\
 	p_z \\
-	p_w
+	1
 	\end{bmatrix}	
 \]
 
@@ -629,11 +631,56 @@ So our matrix looks like this:
 	p_x \\
 	p_y \\
 	p_z \\
-	p_w
+	1
 	\end{bmatrix}	
 \]
 
-The second equation would produce a similar matrix, but instead of minus there would be a plus sign.
+The second equation would produce a similar matrix, but instead of minus there would be a plus sign. We could also say that the second equation will compute the inverse matrix of the first one. If our rotation matrix is \(\mathbf{R}\) and our first translation matrix is \(\mathbf{T}\) we can compute the final matrix by multiplying in the following order:
+\[
+	\mathbf{A} = \mathbf{T} \mathbf{R} \mathbf{T^-1}
+\]
+
+
+
+%---------- 2.3. Shear ---------
+\section{Shear}
+
+Shearing is a linear transformation which could be explained as shifting parallel planes in distance relative to the plane's distance from the origin (analogy with a deck of cards which is slides). See \ref{fig:shear}:
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.9\textwidth]{shear-diagram}
+\caption{shear}
+\label{fig:shear}
+\end{figure}
+
+The further \(\mathbf{p}\) is from the ``ground'' plane the more it is displaced in direction \(\mathbf{\hat{v}}\). The distance of \(\mathbf{p}\) from the ground plane can be obtained trough from \(\mathbf{p} \cdot \mathbf{\hat{n}}\). The shift is in the direction of \(\mathbf{\hat{v}}\) and is proportionate to the height. Note that vector \(\mathbf{v}\) must be such that is from the plane, so \(\mathbf{v} \perp \mathbf{\hat{n}}\). Our formula is:
+\begin{mdframed}
+\[
+	\mathbf{p\prime} = \mathbf{p} + (\mathbf{p} \cdot \mathbf{\hat{n}})\mathbf{v}
+\]
+\end{mdframed}
+
+The magnitude of \(\mathbf{v}\) expresses the magnitude of the shear per height unit. A zero vector \(\mathbf{v}\) would quite obviously mean that the resulting \(\mathbf{p\prime}\) is the same as \(\mathbf{p}\) and the higher \(|\mathbf{v}|\) is the further \(\mathbf{p\prime}\) would be from \(\mathbf{p}\).
+
+Also note that we assume that the plane crosses trough the origin. This could easily be adapted to any scenario if we shifted the initial point \(\mathbf{p}\) by \(-\mathbf{\hat{n}}D\), and then the resulting point \(\mathbf{p\prime}\) \(\mathbf{\hat{n}}D\), where D is the forth plane parameter in the plane equation (as explained earlier).
+
+\subsection{Deriving a matrix}
+
+If we decomposed the formula in a system of 3 equations we would get:
+\begin{align*}
+	p\prime_x = p_x + (n_x p_x + n_y p_y + n_z p_z) v_x	\\
+	p\prime_y = p_y + (n_x p_x + n_y p_y + n_z p_z) v_y	\\
+	p\prime_z = p_z + (n_x p_x + n_y p_y + n_z p_z) v_z	
+\end{align*}
+
+Now if we rearranged it, we would get:
+\begin{align*}
+	p\prime_x = (1 + v_x n_x) p_x + v_x n_y p_y + v_x n_z p_z	\\
+	p\prime_y = v_y n_x p_x + (1 + v_y n_y) p_y + v_y n_z p_z	\\
+	p\prime_z = v_z n_x p_x + v_z n_y p_y + (1 + v_z n_z) p_z
+\end{align*}
+
+Creating a matrix is then straightforward:
 \[
 	\begin{bmatrix}
 	p\prime_x \\
@@ -643,16 +690,16 @@ The second equation would produce a similar matrix, but instead of minus there w
 	\end{bmatrix}
 	=
 	\begin{bmatrix}
-	1 + n_x		&	n_y		&	n_z		&	0	\\
-	n_x			&	1 +n_y	&	n_z		&	0	\\
-	n_x			&	n_y		&	1 + n_z	&	0	\\
+	1 + v_x n_x		&	v_x n_y		&	v_x n_z		&	0	\\
+	v_y n_x			&	1 + v_y n_y	&	v_y n_z		&	0	\\
+	v_z n_x			&	v_z n_y		&	1 + v_z n_z	&	0	\\
 		0		&	0		&	0		&	1
 	\end{bmatrix}
 	\begin{bmatrix}
 	p_x \\
 	p_y \\
 	p_z \\
-	p_w
+	1
 	\end{bmatrix}	
 \]
 
@@ -673,6 +720,10 @@ The second equation would produce a similar matrix, but instead of minus there w
 	shortest.''
 \end{quotation}
 %> SEG instruction to authors <%
+
+
+\section{Transformations}
+
 
 
 Blah blah blah
